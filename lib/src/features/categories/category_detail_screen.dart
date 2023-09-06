@@ -8,9 +8,17 @@ import '../imageview_screen.dart';
 
 class CategoryDetailScreen extends StatefulWidget {
   String name;
+  String title;
+  String descriptions;
   List image;
 
-  CategoryDetailScreen({super.key, required this.name, required this.image});
+  CategoryDetailScreen({
+    super.key,
+    required this.name,
+    required this.title,
+    required this.descriptions,
+    required this.image,
+  });
 
   @override
   State<CategoryDetailScreen> createState() => _CategoryDetailScreenState();
@@ -28,7 +36,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +105,9 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => ImageViewScreen(
-                              getImage: widget.image[index]['image']),
+                              getImage: widget.image[index]['image'],
+                          title: widget.title,
+                          descriptions: widget.descriptions),
                         ));
                       },
                       child: Padding(

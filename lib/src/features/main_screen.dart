@@ -29,24 +29,21 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-
   final FavoriteController favoriteController = Get.put(FavoriteController());
   final NavbarController navbarController = Get.put(NavbarController());
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   var currentIndex = 0;
 
-  void onItemTapped(int index) {
-    setState(() {
-      currentIndex = index;
-      if (index == 3) {
-        _scaffoldKey.currentState?.openDrawer();
-      }
-    });
-  }
+  // onItemTapped() {
+  //   setState(() {
+  //
+  //   });
+  //   _scaffoldKey.currentState?.openDrawer();
+  // }
 
   List pages = [
     const HomeScreen(),
-       FavoriteScreen(),
+    FavoriteScreen(),
     const AlbumsScreen(),
     const MenuScreen()
   ];
@@ -55,8 +52,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     var size = MediaQuery.of(context).size;
+
     Future<bool> showExitPopup() async {
       return await showDialog(
             context: context,
@@ -76,7 +73,10 @@ class _MainScreenState extends State<MainScreen> {
                         onTap: () {
                           exit(0);
                         },
-                        child: customButton('Yes')),
+                        child: customButton(
+                            btnName: 'Yes',
+                            borderColor: primaryColor,
+                            context: context)),
                     Container(
                       height: 40,
                       width: .7,
@@ -86,7 +86,10 @@ class _MainScreenState extends State<MainScreen> {
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: customButton('No')),
+                        child: customButton(
+                            btnName: 'No',
+                            borderColor: primaryColor,
+                            context: context)),
                   ],
                 )
               ],
@@ -115,7 +118,10 @@ class _MainScreenState extends State<MainScreen> {
             currentIndex: currentIndex,
             // onTap: navbarController
             //     .onItemTapped(navbarController.selectedIndex.toInt()),
-            onTap: onItemTapped,
+            onTap: (value) {
+              currentIndex = value;
+              setState(() {});
+            },
             items: [
               BottomNavigationBarItem(
                 icon: Get.isDarkMode
@@ -130,81 +136,134 @@ class _MainScreenState extends State<MainScreen> {
                 // icon: Icon(Icons.bar_chart_sharp),
 
                 // SvgPicture.asset('assets/icons/heart.svg'),
-                icon: Obx(() => InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => FavoriteScreen(
-                              image: AssetImage(favoriteController
-                                  .favoriteIncrement
-                                  .toString())),
-                        ));
-                      },
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Get.isDarkMode
-                              ? SvgPicture.asset(
-                                  'assets/icons/heart.svg',
-                                  color: Colors.white,
-                                )
-                              : SvgPicture.asset(
-                                  'assets/icons/heart.svg',
-                                  color: Colors.red,
-                                ),
-                          // const Icon(Icons.heart_broken),
-                          favoriteController.favIncrementValue.value == 0
-                              ? const SizedBox()
-                              : Positioned(
-                                  left: 20,
-                                  bottom: 12,
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    height: size.height / 50,
-                                    width: size.width / 24,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: Colors.black.withOpacity(0.1)),
-                                    child: Center(
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        favoriteController.favIncrementValue
-                                            .toString(),
-                                        style: const TextStyle(
-                                            fontSize: 9, color: Colors.red),
-                                      ),
-                                    ),
+                icon: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => FavoriteScreen(
+                          image: AssetImage(
+                              favoriteController.favoriteIncrement.toString())),
+                    ));
+                  },
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Get.isDarkMode
+                          ? SvgPicture.asset(
+                              'assets/icons/heart.svg',
+                              color: Colors.white,
+                            )
+                          : SvgPicture.asset(
+                              'assets/icons/heart.svg',
+                              color: Colors.red,
+                            ),
+                      // const Icon(Icons.heart_broken),
+                      favoriteController.favIncrementValue.value == 0
+                          ? const SizedBox()
+                          : Positioned(
+                              left: 20,
+                              bottom: 12,
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: size.height / 50,
+                                width: size.width / 24,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    color: Colors.black.withOpacity(0.1)),
+                                child: Center(
+                                  child: Text(
+                                    textAlign: TextAlign.center,
+                                    favoriteController.favIncrementValue
+                                        .toString(),
+                                    style: const TextStyle(
+                                        fontSize: 9, color: Colors.red),
                                   ),
-                                )
-                        ],
-                      ),
-                    )),
+                                ),
+                              ),
+                            )
+                    ],
+                  ),
+                ),
                 label: 'Favorite',
               ),
               BottomNavigationBarItem(
-                  icon: Get.isDarkMode
-                      ? SvgPicture.asset(
-                          'assets/icons/album.svg',
-                          color: Colors.white,
-                        )
-                      : SvgPicture.asset(
-                          'assets/icons/album.svg',
-                          color: Colors.red,
-                        ),
-                  // icon: Icon(Icons.bar_chart_sharp),
+                  icon: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const AlbumsScreen(
+
+                            // image: AssetImage(favoriteController
+                            //     .favoriteIncrement
+                            //     .toString())
+
+                            ),
+                      ));
+                    },
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Get.isDarkMode
+                            ? SvgPicture.asset(
+                                'assets/icons/album.svg',
+                                color: Colors.white,
+                              )
+                            : SvgPicture.asset(
+                                'assets/icons/album.svg',
+                                color: Colors.red,
+                              ),
+                        // const Icon(Icons.heart_broken),
+                        favoriteController.favIncrementValue.value == 0
+                            ? const SizedBox()
+                            : Positioned(
+                                left: 20,
+                                bottom: 12,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: size.height / 50,
+                                  width: size.width / 24,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: Colors.black.withOpacity(0.1)),
+                                  child: Center(
+                                    child: Text(
+                                      textAlign: TextAlign.center,
+                                      favoriteController.favIncrementValue
+                                          .toString(),
+                                      style: const TextStyle(
+                                          fontSize: 9, color: Colors.red),
+                                    ),
+                                  ),
+                                ),
+                              )
+                      ],
+                    ),
+                  ),
                   label: 'Albums'),
               BottomNavigationBarItem(
-                  icon: Get.isDarkMode
-                      ? SvgPicture.asset(
+
+                  icon: InkWell(
+                      onTap: () {
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //   builder: (context) {
+                        //     // return onItemTapped();
+                        //     return Container();
+                        //   },
+                        // ));
+                      },
+                      child: Container(
+                        child: Get.isDarkMode
+                            ? SvgPicture.asset(
                           'assets/icons/menu.svg',
                           color: Colors.white,
                         )
-                      : SvgPicture.asset(
+                            : SvgPicture.asset(
                           'assets/icons/menu.svg',
                           color: Colors.red,
                         ),
-                  // icon: Icon(Icons.menu),
-                  label: '')
+                      )
+               
+
+                      ), label: '',),
+
             ]),
       ),
     );

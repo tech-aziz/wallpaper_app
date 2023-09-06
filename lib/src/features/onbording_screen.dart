@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../constants/colors.dart';
 import '../utils/utils.dart';
 import 'main_screen.dart';
 
@@ -15,7 +14,6 @@ class OnBordingScreen extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(10.0),
             decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.blueGrey,
@@ -25,7 +23,7 @@ class OnBordingScreen extends StatelessWidget {
               ],
               image: DecorationImage(
                 image: NetworkImage(
-                    'https://images.unsplash.com/photo-1617396900799-f4ec2b43c7ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'),
+                    'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2126&q=80'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -35,7 +33,6 @@ class OnBordingScreen extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(10.0),
             decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
               gradient: LinearGradient(
                 colors: [
                   Colors.white,
@@ -84,6 +81,7 @@ class OnBordingScreen extends StatelessWidget {
                     const SizedBox(
                       height: Utils.defaultPadding,
                     ),
+
                     Padding(
                       padding: const EdgeInsets.all(Utils.defaultPadding / 2),
                       child: SizedBox(
@@ -104,11 +102,12 @@ class OnBordingScreen extends StatelessWidget {
                                   MaterialPageRoute(
                                     builder: (context) => const MainScreen(),
                                   ),
-                                  (route) => false);
+                                      (route) => false);
                             },
                             child: const Text('Get Started')),
                       ),
                     ),
+
                     const SizedBox(
                       height: Utils.defaultPadding / 2,
                     ),

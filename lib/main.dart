@@ -7,8 +7,11 @@ import 'package:flutter/services.dart';
 
 void main() {
   AllBindings().dependencies();
+  //for downloading image
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+
   runApp(const MyApp());
 }
 
@@ -30,7 +33,6 @@ class _MyAppState extends State<MyApp> {
         theme: lightThemeData,
         darkTheme: darkThemeData,
         home: const SplashScreen(),
-
         // themeMode: ThemeMode.system,
         // theme: ThemeData(
         //   colorScheme: ColorScheme.fromSwatch(
