@@ -287,7 +287,7 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                           context: context,
                           builder: (context) {
                             return SizedBox(
-                              height: 300,
+                              height: 290,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
