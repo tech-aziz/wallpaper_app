@@ -41,6 +41,7 @@ class _MainScreenState extends State<MainScreen> {
   //   _scaffoldKey.currentState?.openDrawer();
   // }
 
+  //List of pages
   List pages = [
     const HomeScreen(),
     FavoriteScreen(),
