@@ -7,7 +7,7 @@ Widget customButton({required String btnName, required Color borderColor,  Color
     padding: const EdgeInsets.all(Utils.defaultPadding / 2),
     child: Container(
       height: 50,
-      width: 100,
+      width: double.infinity,
       decoration:  BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(Utils.defaultBorderRadius)),
         border: Border.all(width: 1, color: borderColor)
