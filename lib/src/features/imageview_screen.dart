@@ -58,13 +58,14 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
 
   @override
   void initState() {
-    // hide status bar
+    // for hide status bar
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     super.initState();
   }
 
   @override
   void dispose() {
+    // for dispose status bar
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     super.dispose();
   }
