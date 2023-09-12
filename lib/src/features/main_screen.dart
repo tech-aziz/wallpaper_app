@@ -107,11 +107,14 @@ class _MainScreenState extends State<MainScreen> {
         // backgroundColor: Colors.white,
         body: pages[0],
         bottomNavigationBar: BottomNavigationBar(
+
             type: BottomNavigationBarType.fixed,
-            selectedFontSize: 0,
-            unselectedFontSize: 0,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
+            // selectedFontSize: 0,
+            // unselectedFontSize: 0,
+            // showSelectedLabels: false,
+            // showUnselectedLabels: false,
+
+
             elevation: 0,
             // selectedItemColor: Colors.white,
             // unselectedItemColor: Colors.white.withOpacity(0.5),

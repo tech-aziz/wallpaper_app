@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer( const Duration(seconds: 2), () {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (_) => const OnBordingScreen()),
+        MaterialPageRoute(builder: (_) => const OnBoardingScreen()),
         (route) => false,
       );
     });

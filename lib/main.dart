@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:galleryapp/src/bindings/all_bindings.dart';
+import 'package:galleryapp/src/features/practice_widget.dart';
 import 'package:galleryapp/src/features/splash_screen.dart';
 import 'package:galleryapp/src/utils/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -32,7 +33,8 @@ class _MyAppState extends State<MyApp> {
         title: 'Wallpaper-App',
         theme: lightThemeData,
         darkTheme: darkThemeData,
-        home: const SplashScreen(),
+        // home: const SplashScreen(),
+      home: const PracticeWidget(),
         // themeMode: ThemeMode.system,
         // theme: ThemeData(
         //   colorScheme: ColorScheme.fromSwatch(
