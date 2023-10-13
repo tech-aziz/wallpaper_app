@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:galleryapp/src/common_widgets/custom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -1716,6 +1717,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     FocusManager.instance.primaryFocus?.unfocus();
     return Scaffold(
+      drawer: const CustomNavigationDrawer(),
+      appBar: AppBar(
+        elevation: 0,
+        title: const  Text('Wallpaper'),
+        centerTitle: true,
+      ),
       // backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
@@ -1727,7 +1734,8 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 10,
               ),
-              const CustomSearchBar(),
+
+              // const CustomSearchBar(),
               const SizedBox(
                 height: 28,
               ),

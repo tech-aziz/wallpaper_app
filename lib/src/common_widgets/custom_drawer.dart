@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:store_redirect/store_redirect.dart';
-import 'package:rating_dialog/rating_dialog.dart';
 import '../utils/utils.dart';
 
 class CustomNavigationDrawer extends StatefulWidget {
@@ -203,11 +202,6 @@ class _CustomNavigationDrawerState extends State<CustomNavigationDrawer> {
                 ),
               ),
               ListTile(
-                onTap: () {
-                  Get.changeThemeMode(
-                      Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
-                  Navigator.pop(context);
-                },
                 leading: Get.isDarkMode
                     ? SvgPicture.asset(
                   'assets/icons/dark_or_light.svg',
@@ -224,7 +218,11 @@ class _CustomNavigationDrawerState extends State<CustomNavigationDrawer> {
                 trailing: IconButton(
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.changeThemeMode(
+                        Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+                    Navigator.pop(context);
+                  },
                   icon: Icon(
                       Get.isDarkMode ? Icons.light_mode : Icons.dark_mode),
                 ),

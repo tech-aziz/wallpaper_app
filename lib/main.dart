@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:galleryapp/src/bindings/all_bindings.dart';
-import 'package:galleryapp/src/features/practice_widget.dart';
 import 'package:galleryapp/src/features/splash_screen.dart';
 import 'package:galleryapp/src/utils/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -11,7 +10,6 @@ void main() {
   //for downloading image
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
 
   runApp(const MyApp());
 }
@@ -24,18 +22,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Wallpaper-App',
-        theme: lightThemeData,
+        // theme: lightThemeData,
+        theme: ThemeData(
+            primarySwatch: Colors.grey
+            // listTileTheme: const ListTileThemeData(
+            //   tileColor: Colors.white,
+            // )
+        ),
         darkTheme: darkThemeData,
-        // home: const SplashScreen(),
-      home: const PracticeWidget(),
+        home: const SplashScreen(),
+
         // themeMode: ThemeMode.system,
+
         // theme: ThemeData(
         //   colorScheme: ColorScheme.fromSwatch(
         //     primarySwatch: Colors.green
