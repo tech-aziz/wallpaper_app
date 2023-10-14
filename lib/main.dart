@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Wallpaper-App',
         // theme: lightThemeData,
         theme: ThemeData(
-            primarySwatch: Colors.grey
+            primarySwatch: Colors.red
             // listTileTheme: const ListTileThemeData(
             //   tileColor: Colors.white,
             // )

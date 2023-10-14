@@ -94,7 +94,6 @@ class _MainScreenState extends State<MainScreen> {
       onWillPop: showExitPopup,
       child: Scaffold(
         key: _scaffoldKey,
-
         // backgroundColor: Colors.white,
         body: pages[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
@@ -118,14 +117,14 @@ class _MainScreenState extends State<MainScreen> {
             },
             items: [
               BottomNavigationBarItem(
-                icon: Get.isDarkMode
-                    ? SvgPicture.asset('assets/icons/home.svg',
-                        color: Colors.white)
-                    : SvgPicture.asset('assets/icons/home.svg',
-                        color: Colors.red),
-                // icon: Icon(Icons.apps_rounded),
-                label: 'Home',
-              ),
+                  icon: Get.isDarkMode
+                      ? SvgPicture.asset('assets/icons/home.svg',
+                          color: Colors.white)
+                      : SvgPicture.asset('assets/icons/home.svg',
+                          color: Colors.green),
+                  // icon: Icon(Icons.apps_rounded),
+
+                  label: 'Home'),
               BottomNavigationBarItem(
                 // icon: Icon(Icons.bar_chart_sharp),
                 // SvgPicture.asset('assets/icons/heart.svg'),
@@ -139,7 +138,7 @@ class _MainScreenState extends State<MainScreen> {
                           )
                         : SvgPicture.asset(
                             'assets/icons/heart.svg',
-                            color: Colors.red,
+                            color: Colors.green,
                           ),
                     // const Icon(Icons.heart_broken),
                     favoriteController.favIncrementValue.value == 0
@@ -180,7 +179,7 @@ class _MainScreenState extends State<MainScreen> {
                             )
                           : SvgPicture.asset(
                               'assets/icons/album.svg',
-                              color: Colors.red,
+                              color: Colors.green,
                             ),
                       // const Icon(Icons.heart_broken),
                       favoriteController.favIncrementValue.value == 0

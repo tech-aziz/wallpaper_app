@@ -76,7 +76,8 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         {
           'name': 'Drink in hot summer',
-          'descriptions': 'It is a wonderful thing to drink a cold drink in hot summer.',
+          'descriptions':
+              'It is a wonderful thing to drink a cold drink in hot summer.',
           'image':
               'https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=715&q=80'
         },
@@ -559,7 +560,6 @@ class _HomeScreenState extends State<HomeScreen> {
           'image':
               'https://plus.unsplash.com/premium_photo-1677449236313-f8e5eda09a72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
         },
-
         {
           'name': 'pool party',
           'descriptions': 'Best friend enjoy their leisure time in pool',
@@ -680,7 +680,6 @@ class _HomeScreenState extends State<HomeScreen> {
           'image':
               'https://images.unsplash.com/photo-1534307250431-ef2530a9d8c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
         },
-
         {
           'name': 'pool party',
           'descriptions': 'Best friend enjoy their leisure time in pool',
@@ -718,7 +717,6 @@ class _HomeScreenState extends State<HomeScreen> {
               'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80'
         },
         {
-
           'name': 'pool party',
           'descriptions': 'Best friend enjoy their leisure time in pool',
           'image':
@@ -819,7 +817,6 @@ class _HomeScreenState extends State<HomeScreen> {
           'image':
               'https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=671&q=80'
         },
-
         {
           'name': 'pool party',
           'descriptions': 'Best friend enjoy their leisure time in pool',
@@ -961,7 +958,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ]
     },
     {
-
       'name': 'Animal',
       'image': [
         {
@@ -1126,7 +1122,6 @@ class _HomeScreenState extends State<HomeScreen> {
           'image':
               'https://images.unsplash.com/photo-1590079015089-875baa76cc8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80'
         },
-
         {
           'name': 'pool party',
           'descriptions': 'Best friend enjoy their leisure time in pool',
@@ -1139,7 +1134,6 @@ class _HomeScreenState extends State<HomeScreen> {
           'image':
               'https://images.unsplash.com/photo-1547382442-d17c21625a44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
         },
-
         {
           'name': 'pool party',
           'descriptions': 'Best friend enjoy their leisure time in pool',
@@ -1684,7 +1678,6 @@ class _HomeScreenState extends State<HomeScreen> {
           'image':
               'https://images.unsplash.com/photo-1596578243261-9a9494315404?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
         },
-
         {
           'name': 'pool party',
           'descriptions': 'Best friend enjoy their leisure time in pool',
@@ -1720,7 +1713,14 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const CustomNavigationDrawer(),
       appBar: AppBar(
         elevation: 0,
-        title: const  Text('Wallpaper'),
+        title: Text('Happy Wall',
+            style: GoogleFonts.lato(
+              textStyle: Theme.of(context).textTheme.displayLarge,
+              fontSize: Utils.mediumTextSize,
+              color: Colors.white,
+              fontWeight: FontWeight.w900,
+              fontStyle: FontStyle.italic,
+            )),
         centerTitle: true,
       ),
       // backgroundColor: Colors.white,
@@ -1829,8 +1829,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => CategoryDetailScreen(
                               name: data.name.toString(),
-                              title: categoriesImageList1[index]['image'][index]['name'],
-                              descriptions: categoriesImageList1[index]['image'][index]['descriptions'],
+                              title: categoriesImageList1[index]['image'][index]
+                                  ['name'],
+                              descriptions: categoriesImageList1[index]['image']
+                                  [index]['descriptions'],
                               image: categoriesImageList1[index]['image']),
                         ));
                       },

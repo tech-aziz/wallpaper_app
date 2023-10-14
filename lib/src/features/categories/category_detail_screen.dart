@@ -34,6 +34,48 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
     // print(widget.image.length);
     // FocusManager.instance.primaryFocus?.unfocus();
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+          leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(Icons.arrow_back_ios)),
+          titleSpacing: -20.0,
+          elevation: 0,
+          title: ListTile(
+            title: Get.isDarkMode
+                ? Text(
+                    widget.name,
+                    style: GoogleFonts.lato(
+                      textStyle: Theme.of(context).textTheme.displayLarge,
+                      fontSize: Utils.mediumTextSize,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  )
+                : Text(
+                    widget.name,
+                    style: GoogleFonts.lato(
+                      textStyle: Theme.of(context).textTheme.displayLarge,
+                      fontSize: Utils.mediumTextSize,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+            subtitle: Text(
+              '${widget.image.length} Wallpaper Available',
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.displayLarge,
+                fontSize: Utils.smallTextSize,
+                fontWeight: FontWeight.w800,
+                color: Colors.white,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          )),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8),
@@ -41,52 +83,6 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Get.isDarkMode
-                      ? Text(
-                          widget.name,
-                          style: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.displayLarge,
-                            fontSize: Utils.largeTextSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w800,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        )
-                      : Text(
-                          widget.name,
-                          style: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.displayLarge,
-                            fontSize: Utils.largeTextSize,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w800,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    '${widget.image.length} Wallpaper Available',
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.displayLarge,
-                      fontSize: Utils.smallTextSize,
-                      fontWeight: FontWeight.w800,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  // const CustomSearchBar(),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
               Expanded(
                 child: MasonryGridView.builder(
                   shrinkWrap: true,
@@ -106,8 +102,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => ImageViewScreen(
                               getImage: widget.image[index]['image'],
-                          title: widget.title,
-                          descriptions: widget.descriptions),
+                              title: widget.title,
+                              descriptions: widget.descriptions),
                         ));
                       },
                       child: Padding(

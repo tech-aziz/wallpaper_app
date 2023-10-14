@@ -83,6 +83,7 @@ class OnBoardingScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(Utils.defaultPadding / 2),
                       child: SizedBox(
                         width: double.infinity,
+                        height: 45,
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(

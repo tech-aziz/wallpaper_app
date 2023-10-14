@@ -93,14 +93,14 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                       onTap: () => Navigator.pop(context),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(.1),
+                            color: Colors.black.withOpacity(.2),
                             border: Border.all(
                                 color: Colors.white.withOpacity(.15), width: 1),
                             shape: BoxShape.circle),
                         child: const Center(
                           child: Icon(
                             Icons.arrow_back_ios_sharp,
-                            color: Colors.red,
+                            color: Colors.white,
                             size: 25,
                           ),
                         ),
