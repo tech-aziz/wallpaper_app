@@ -46,7 +46,7 @@ dependencies:
   rating_dialog: ^2.0.4
   flutter_file_downloader: ^1.1.2
   flutter_wallpaper_manager: ^0.0.4
-  wallpaper: ^1.1.1
+  url_launcher: ^6.1.14
 
 
 

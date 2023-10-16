@@ -38,7 +38,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
         automaticallyImplyLeading: false,
           leading: InkWell(
               onTap: () {
-                Navigator.pop(context);
+                Get.back();
               },
               child: const Icon(Icons.arrow_back_ios)),
           titleSpacing: -20.0,

@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:galleryapp/src/common_widgets/custom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import '../common_widgets/custom_searchbar.dart';
 import '../models/categories_image_model.dart';
 import '../utils/utils.dart';
@@ -1710,18 +1712,53 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     FocusManager.instance.primaryFocus?.unfocus();
     return Scaffold(
-      drawer: const CustomNavigationDrawer(),
+      // drawer: const CustomNavigationDrawer(),
       appBar: AppBar(
+        backgroundColor: Colors.black.withOpacity(0.5),
+        titleSpacing: 0,
+        // leading: Builder(
+        //   builder: (context) {
+        //     return IconButton(
+        //       icon: SvgPicture.asset(
+        //         'assets/icons/menu.svg',
+        //         color: Colors.white,
+        //         height: 36,
+        //       ),
+        //       // Change this icon
+        //       onPressed: () {
+        //         Scaffold.of(context).openDrawer();
+        //       },
+        //     );
+        //   },
+        // ),
         elevation: 0,
-        title: Text('Happy Wall',
-            style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.displayLarge,
-              fontSize: Utils.mediumTextSize,
-              color: Colors.white,
-              fontWeight: FontWeight.w900,
-              fontStyle: FontStyle.italic,
-            )),
-        centerTitle: true,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Text('Happy Wall',
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.displayLarge,
+                fontSize: Utils.mediumTextSize,
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
+                fontStyle: FontStyle.italic,
+              )),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: InkWell(
+              onTap: () {
+                print('ad icon is clicked');
+              },
+              child: Lottie.asset(
+                height: 35,
+                width: 35,
+                animate: true,
+                'assets/json/ad_animation.json',
+              ),
+            ),
+          )
+        ],
       ),
       // backgroundColor: Colors.white,
       body: SafeArea(

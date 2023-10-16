@@ -10,7 +10,7 @@ import '../controller/navbar_controller.dart';
 import 'home_screen.dart';
 import 'nav_screens/albums_screen.dart';
 import 'nav_screens/favorite_screen.dart';
-import 'nav_screens/menu_screen.dart';
+import 'nav_screens/settings_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -76,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                     InkWell(
                         onTap: () {
-                          Navigator.pop(context);
+                          Get.back();
                         },
                         child: customButton(
                             btnName: 'No',
@@ -121,7 +121,7 @@ class _MainScreenState extends State<MainScreen> {
                       ? SvgPicture.asset('assets/icons/home.svg',
                           color: Colors.white)
                       : SvgPicture.asset('assets/icons/home.svg',
-                          color: Colors.green),
+                          color: Colors.black),
                   // icon: Icon(Icons.apps_rounded),
 
                   label: 'Home'),
@@ -138,7 +138,7 @@ class _MainScreenState extends State<MainScreen> {
                           )
                         : SvgPicture.asset(
                             'assets/icons/heart.svg',
-                            color: Colors.green,
+                            color: Colors.black,
                           ),
                     // const Icon(Icons.heart_broken),
                     favoriteController.favIncrementValue.value == 0
@@ -179,7 +179,7 @@ class _MainScreenState extends State<MainScreen> {
                             )
                           : SvgPicture.asset(
                               'assets/icons/album.svg',
-                              color: Colors.green,
+                              color: Colors.black,
                             ),
                       // const Icon(Icons.heart_broken),
                       favoriteController.favIncrementValue.value == 0
@@ -212,15 +212,17 @@ class _MainScreenState extends State<MainScreen> {
                 icon: Container(
                   child: Get.isDarkMode
                       ? SvgPicture.asset(
-                          'assets/icons/menu.svg',
+                          'assets/icons/more.svg',
                           color: Colors.white,
+                          height: 25,
                         )
                       : SvgPicture.asset(
-                          'assets/icons/menu.svg',
+                          'assets/icons/more.svg',
                           color: Colors.red,
+                          height: 25,
                         ),
                 ),
-                label: '',
+                label: 'Settings',
               ),
             ]),
       ),
