@@ -13,7 +13,9 @@ import 'nav_screens/favorite_screen.dart';
 import 'nav_screens/settings_screen.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final int? index;
+
+  const MainScreen({super.key, this.index});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -49,44 +51,56 @@ class _MainScreenState extends State<MainScreen> {
     Future<bool> showExitPopup() async {
       return await showDialog(
             context: context,
-            builder: (context) => AlertDialog(
-              alignment: Alignment.center,
-              content: Text('Do you want to close the app?',
-                  style: GoogleFonts.lato(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.italic,
-                  )),
-              actions: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                        onTap: () {
-                          exit(0);
-                        },
-                        child: customButton(textColor: Get.isDarkMode ? Colors.white : Colors.black,
+            builder: (context) {
+              return AlertDialog(
+                alignment: Alignment.center,
+                content: Text('Do you want to close the app?',
+                    style: GoogleFonts.lato(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.italic,
+                    )),
+                actions: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            exit(0);
+                          },
+                          child: customButton(
+                            textColor:
+                                Get.isDarkMode ? Colors.white : Colors.black,
                             btnName: 'Yes',
                             borderColor: primaryColor,
-                            context: context)),
-                    Container(
-                      height: 40,
-                      width: .7,
-                      color: Colors.black12.withOpacity(0.7),
-                    ),
-                    InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: customButton(
-                            textColor: Get.isDarkMode ? Colors.white : Colors.black,
-                            btnName: 'No',
-                            borderColor: primaryColor,
-                            context: context)),
-                  ],
-                )
-              ],
-            ),
+                            context: context,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 40,
+                        width: .7,
+                        color: Colors.black12.withOpacity(0.7),
+                      ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: customButton(
+                              textColor:
+                                  Get.isDarkMode ? Colors.white : Colors.black,
+                              btnName: 'No',
+                              borderColor: primaryColor,
+                              context: context),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              );
+            },
           ) ??
           false;
     }

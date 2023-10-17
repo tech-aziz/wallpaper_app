@@ -1714,6 +1714,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       // drawer: const CustomNavigationDrawer(),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.black.withOpacity(0.5),
         titleSpacing: 0,
         // leading: Builder(
@@ -1803,10 +1804,11 @@ class _HomeScreenState extends State<HomeScreen> {
               CarouselSlider(
                 options: CarouselOptions(
                     enlargeCenterPage: true,
-                    enableInfiniteScroll: false,
+                    enableInfiniteScroll: true,
                     scrollDirection: Axis.horizontal,
                     autoPlay: true,
                     reverse: false,
+
                     height: 200),
                 items: bestOfMonthImageList
                     .map((e) => ClipRRect(

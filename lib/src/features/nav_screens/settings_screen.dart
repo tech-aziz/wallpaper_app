@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:galleryapp/src/features/home_screen.dart';
+import 'package:galleryapp/src/features/main_screen.dart';
 import 'package:url_launcher/url_launcher.dart' as UL;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -90,19 +91,63 @@ class _MenuScreenState extends State<MenuScreen> {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(
-                color: Colors.blue,
+          InkWell(
+            onTap: () => Get.snackbar('title', 'message'),
+            child: Container(
+              height: MediaQuery.sizeOf(context).height * .2,
+              width: double.infinity,
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/car4.jpg'),
-                    fit: BoxFit.cover)),
-            child: Container(),
+                  image: AssetImage(
+                    'assets/images/car4.jpg',
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 35,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(25)),
+                      child: TextButton.icon(
+                          onPressed: () {
+
+                          },
+                          icon: Get.isDarkMode
+                              ? SvgPicture.asset(
+                            'assets/icons/remove_ad.svg',
+                            color: Colors.white,
+                          )
+                              : SvgPicture.asset(
+                            'assets/icons/remove_ad.svg',
+                            color: Colors.red,
+                          ),
+                          label: Get.isDarkMode
+                              ? const Text(
+                            'Go Premium',
+                            style: TextStyle(color: Colors.white),
+                          )
+                              : const Text(
+                            'Go Premium',
+                            style: TextStyle(color: Colors.black),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
           Column(
             children: [
               ListTile(
                 onTap: () {
-                  Get.to(()=> const HomeScreen());
+                  Get.offAll(() => const MainScreen());
                 },
                 title: const Text(
                   'Home',
@@ -185,7 +230,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   final Uri params = Uri(
                     scheme: 'mailto',
                     path: 'wallpaper-pro@gmail.com',
-                    query: 'subject=emails&body}',
+                    query: 'Happy Wall Feedback',
                   );
                   final url = params.toString();
                   final urlPath = Uri.parse(url);
@@ -300,7 +345,9 @@ class _MenuScreenState extends State<MenuScreen> {
                 trailing: const Icon(Icons.keyboard_arrow_right_rounded),
               ),
               const Divider(),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
