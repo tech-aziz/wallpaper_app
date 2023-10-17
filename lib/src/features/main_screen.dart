@@ -65,7 +65,7 @@ class _MainScreenState extends State<MainScreen> {
                         onTap: () {
                           exit(0);
                         },
-                        child: customButton(
+                        child: customButton(textColor: Get.isDarkMode ? Colors.white : Colors.black,
                             btnName: 'Yes',
                             borderColor: primaryColor,
                             context: context)),
@@ -79,6 +79,7 @@ class _MainScreenState extends State<MainScreen> {
                           Get.back();
                         },
                         child: customButton(
+                            textColor: Get.isDarkMode ? Colors.white : Colors.black,
                             btnName: 'No',
                             borderColor: primaryColor,
                             context: context)),
@@ -218,7 +219,7 @@ class _MainScreenState extends State<MainScreen> {
                         )
                       : SvgPicture.asset(
                           'assets/icons/more.svg',
-                          color: Colors.red,
+                          color: Colors.black,
                           height: 25,
                         ),
                 ),
