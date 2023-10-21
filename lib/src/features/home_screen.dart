@@ -1733,8 +1733,8 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         title: Padding(
           padding: const EdgeInsets.only(left: 8),
-          child: Text('Happy Wall',
-              style: Style.bottomNavBarTextStyle(context)),
+          child:
+              Text('Happy Wall', style: Style.bottomNavBarTextStyle(context)),
         ),
         actions: [
           Padding(
@@ -1800,7 +1800,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     autoPlay: true,
                     reverse: false,
-
                     height: 200),
                 items: bestOfMonthImageList
                     .map((e) => ClipRRect(
@@ -1884,17 +1883,28 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Positioned(
                               child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    data.name.toString(),
-                                    style: GoogleFonts.lato(
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .displayLarge,
-                                      fontSize: Utils.mediumTextSize,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w900,
-                                      fontStyle: FontStyle.italic,
+                                  alignment: Alignment.bottomCenter,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 12.0),
+                                    child: Text(
+                                      data.name.toString(),
+                                      style: GoogleFonts.lato(
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .displayLarge,
+                                        fontSize: Utils.mediumTextSize,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w900,
+                                        fontStyle: FontStyle.italic,
+                                        shadows: [
+                                          Shadow(
+                                            color: Colors.black.withOpacity(0.7),
+                                            offset: const Offset(5, 7),
+                                            blurRadius: 1
+                                          )
+                                        ],
+                                        letterSpacing: 3
+                                      ),
                                     ),
                                   )))
                         ],
