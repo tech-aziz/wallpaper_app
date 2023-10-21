@@ -10,6 +10,7 @@ import 'package:galleryapp/src/components/custom_dialog_box.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share_plus/share_plus.dart';
 import '../utils/utils.dart';
 import 'package:flutter/services.dart';
 
@@ -192,6 +193,40 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                           ),
                           const Text(
                             'Info',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Share.share('com.example.galleryapp');
+                        print('share is clicked');
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                                border: Border.all(width: 1, color: Colors.red),
+                                // borderRadius: BorderRadius.circular(12),
+                                color: Colors.white10.withOpacity(0.1),
+                                shape: BoxShape.circle),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: SvgPicture.asset(
+                                'assets/icons/share.svg',
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            'Share',
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ],
