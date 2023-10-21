@@ -1,12 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:galleryapp/src/common_widgets/custom_drawer.dart';
+import 'package:galleryapp/src/utils/styles.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import '../common_widgets/custom_searchbar.dart';
 import '../models/categories_image_model.dart';
 import '../utils/utils.dart';
 import 'categories/category_detail_screen.dart';
@@ -1736,13 +1734,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Padding(
           padding: const EdgeInsets.only(left: 8),
           child: Text('Happy Wall',
-              style: GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.displayLarge,
-                fontSize: Utils.mediumTextSize,
-                color: Colors.white,
-                fontWeight: FontWeight.w900,
-                fontStyle: FontStyle.italic,
-              )),
+              style: Style.bottomNavBarTextStyle(context)),
         ),
         actions: [
           Padding(

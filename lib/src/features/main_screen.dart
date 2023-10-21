@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:galleryapp/src/components/custom_button.dart';
 import 'package:galleryapp/src/constants/colors.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../common_widgets/custom_button.dart';
 import '../controller/favorite_controller.dart';
 import '../controller/navbar_controller.dart';
 import 'home_screen.dart';

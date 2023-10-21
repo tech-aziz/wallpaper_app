@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../utils/utils.dart';
 import 'main_screen.dart';
@@ -12,7 +13,7 @@ class OnBoardingScreen extends StatelessWidget {
       children: [
         Positioned(
           child: Container(
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
                   color: Colors.blueGrey.shade700,
@@ -96,11 +97,9 @@ class OnBoardingScreen extends StatelessWidget {
                               ),
                             ),
                             onPressed: () {
-                              Navigator.of(context).pushAndRemoveUntil(
-                                  MaterialPageRoute(
-                                    builder: (context) => const MainScreen(),
-                                  ),
-                                      (route) => false);
+                              Get.off(() => const MainScreen(),
+                                  transition: Transition.rightToLeft,
+                                  duration: const  Duration(seconds: 1));
                             },
                             child: const Text('Get Started')),
                       ),
@@ -116,6 +115,5 @@ class OnBoardingScreen extends StatelessWidget {
         ),
       ],
     );
-
   }
 }

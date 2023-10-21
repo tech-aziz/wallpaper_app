@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
-import 'package:galleryapp/src/common_widgets/custom_button.dart';
-import 'package:galleryapp/src/common_widgets/custom_dialog_box.dart';
-import 'package:galleryapp/src/features/home_screen.dart';
+import 'package:galleryapp/src/components/custom_button.dart';
+import 'package:galleryapp/src/components/custom_circle_container.dart';
+import 'package:galleryapp/src/components/custom_dialog_box.dart';
+
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../utils/utils.dart';
@@ -118,21 +119,14 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                     automaticallyImplyLeading: false,
                     leading: InkWell(
                       onTap: () => Get.back(),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(.2),
-                            border: Border.all(
-                                color: Colors.white.withOpacity(.15), width: 1),
-                            shape: BoxShape.circle),
-                        child: const Center(
-                          child: Icon(
-                            Icons.arrow_back_ios_sharp,
-                            color: Colors.white,
-                            size: 25,
-                          ),
-                        ),
-                      ),
+                      child: customCircleContainer(icon: Icons.arrow_back_ios_new_rounded),
                     ),
+                    actions: [
+                      InkWell(
+                        // onTap: () => Get.back(),
+                        child: customCircleContainer(icon: Icons.heart_broken_rounded),
+                      )
+                    ],
                   ),
                 )
               ],

@@ -1,15 +1,14 @@
 import 'dart:io';
-import 'package:galleryapp/src/features/home_screen.dart';
 import 'package:galleryapp/src/features/main_screen.dart';
-import 'package:url_launcher/url_launcher.dart' as UL;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:galleryapp/src/utils/styles.dart';
 import 'package:galleryapp/src/utils/utils.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:slide_rating_dialog/slide_rating_dialog.dart';
 import 'package:store_redirect/store_redirect.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -21,52 +20,100 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
+  final width = Get.width;
+  final height = Get.height;
+
+  // showRateUsDialog() {
+  //   return showDialog(
+  //     context: context,
+  //     barrierDismissible: true,
+  //     builder: (context) {
+  //       return RatingDialog(
+  //         initialRating: 1.0,
+  //         showCloseButton: false,
+  //         image: Get.isDarkMode
+  //             ? SvgPicture.asset(
+  //                 'assets/icons/happy.svg',
+  //                 color: Colors.white,
+  //                 width: Get.width * .2,
+  //                 height: Get.height * .1,
+  //               )
+  //             : SvgPicture.asset(
+  //                 'assets/icons/happy.svg',
+  //                 color: Colors.red,
+  //                 width: Get.width * .2,
+  //                 height: Get.height * .1,
+  //               ),
+  //         title: Get.isDarkMode
+  //             ? Text(
+  //                 'We are working hard for a better user experience.\n We\'d greatly appreciate if you can\n rate us.',
+  //                 style: GoogleFonts.lato(
+  //                   textStyle: Theme.of(context).textTheme.displayLarge,
+  //                   fontSize: 19,
+  //                   color: Colors.white,
+  //                   fontWeight: FontWeight.w900,
+  //                   fontStyle: FontStyle.italic,
+  //                 ),
+  //                 textAlign: TextAlign.center)
+  //             : Text(
+  //                 'We are working hard for a better user experience.\n We\'d greatly appreciate if you can\n rate us.',
+  //                 style: GoogleFonts.lato(
+  //                   textStyle: Theme.of(context).textTheme.displayLarge,
+  //                   fontSize: 19,
+  //                   color: Colors.black.withOpacity(0.8),
+  //                   fontWeight: FontWeight.w900,
+  //                   fontStyle: FontStyle.italic,
+  //                 ),
+  //                 textAlign: TextAlign.center),
+  //         message: const Text(
+  //           'The best we can get:)',
+  //           textAlign: TextAlign.center,
+  //         ),
+  //         submitButtonText: 'SUBMIT',
+  //         submitButtonTextStyle: GoogleFonts.lato(
+  //           textStyle: Theme.of(context).textTheme.displayLarge,
+  //           fontSize: Utils.smallTextSize,
+  //           color: Colors.red,
+  //           fontWeight: FontWeight.w900,
+  //           fontStyle: FontStyle.italic,
+  //         ),
+  //         onSubmitted: (response) {
+  //           print(
+  //               'The response: ${response.rating} \n and comment ${response.comment}');
+  //           if (response.rating < 3) {
+  //             //send their comments to your emails
+  //             // ask the user to contact you instead of leaving a bad review
+  //           } else {
+  //             StoreRedirect.redirect(
+  //                 androidAppId: 'com.example.galleryapp',
+  //                 iOSAppId: 'com.example.galleryapp');
+  //           }
+  //         },
+  //         starColor: Colors.red,
+  //         onCancelled: () {},
+  //       );
+  //     },
+  //   );
+  // }
+
   showRateUsDialog() {
-    return showDialog(
-      context: context,
-      barrierDismissible: true,
-      builder: (context) {
-        return RatingDialog(
-          showCloseButton: false,
-          commentHint: 'Your Feedback!',
-          title: Text('How would you rate app?',
-              style: GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.displayLarge,
-                fontSize: Utils.mediumTextSize,
-                color: Colors.black,
-                fontWeight: FontWeight.w900,
-                fontStyle: FontStyle.italic,
-              )),
-          image: const Icon(
-            Icons.rate_review,
-            color: Colors.black,
-            size: 50,
-          ),
-          submitButtonText: 'SUBMIT',
-          submitButtonTextStyle: GoogleFonts.lato(
-            textStyle: Theme.of(context).textTheme.displayLarge,
-            fontSize: Utils.smallTextSize,
-            color: Colors.red,
-            fontWeight: FontWeight.w900,
-            fontStyle: FontStyle.italic,
-          ),
-          onSubmitted: (response) {
-            print(
-                'The response: ${response.rating} \n and comment ${response.comment}');
-            if (response.rating < 3) {
-              //send their comments to your emails
-              // ask the user to contact you instead of leaving a bad review
-            } else {
-              StoreRedirect.redirect(
-                  androidAppId: 'com.example.galleryapp',
-                  iOSAppId: 'com.example.galleryapp');
-            }
-          },
-          starColor: Colors.red,
-          onCancelled: () {},
-        );
-      },
-    );
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext cont) => SlideRatingDialog(
+              title: 'Rate Us!',
+              subTitle: "How was your experience with us?",
+              buttonColor: Get.isDarkMode ? Colors.red : Colors.blue,
+              onRatingChanged: (rating) {
+                print(rating.toString());
+              },
+              cancelButton: true,
+              buttonOnTap: () {
+                // Do your Business Logic here;
+                print('Submit is click');
+                Get.back();
+              },
+            ));
   }
 
   @override
@@ -77,14 +124,7 @@ class _MenuScreenState extends State<MenuScreen> {
         titleSpacing: 0,
         title: Padding(
           padding: const EdgeInsets.only(left: 8),
-          child: Text('Settings',
-              style: GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.displayLarge,
-                fontSize: Utils.mediumTextSize,
-                color: Colors.white,
-                fontWeight: FontWeight.w900,
-                fontStyle: FontStyle.italic,
-              )),
+          child: Text('Settings', style: Style.bottomNavBarTextStyle(context)),
         ),
         backgroundColor: Colors.black.withOpacity(0.5),
       ),
@@ -96,11 +136,10 @@ class _MenuScreenState extends State<MenuScreen> {
             child: Container(
               height: MediaQuery.sizeOf(context).height * .2,
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/car4.jpg',
-                  ),
+                  image: NetworkImage(
+                      'https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=671&q=80'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -116,27 +155,25 @@ class _MenuScreenState extends State<MenuScreen> {
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(25)),
                       child: TextButton.icon(
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                           icon: Get.isDarkMode
                               ? SvgPicture.asset(
-                            'assets/icons/remove_ad.svg',
-                            color: Colors.white,
-                          )
+                                  'assets/icons/remove_ad.svg',
+                                  color: Colors.white,
+                                )
                               : SvgPicture.asset(
-                            'assets/icons/remove_ad.svg',
-                            color: Colors.red,
-                          ),
+                                  'assets/icons/remove_ad.svg',
+                                  color: Colors.red,
+                                ),
                           label: Get.isDarkMode
                               ? const Text(
-                            'Go Premium',
-                            style: TextStyle(color: Colors.white),
-                          )
+                                  'Go Premium',
+                                  style: TextStyle(color: Colors.white),
+                                )
                               : const Text(
-                            'Go Premium',
-                            style: TextStyle(color: Colors.black),
-                          )),
+                                  'Go Premium',
+                                  style: TextStyle(color: Colors.black),
+                                )),
                     ),
                   ],
                 ),
@@ -344,7 +381,18 @@ class _MenuScreenState extends State<MenuScreen> {
                       ),
                 trailing: const Icon(Icons.keyboard_arrow_right_rounded),
               ),
-              const Divider(),
+              Get.isDarkMode
+                  ? const Divider(
+                      indent: 20,
+                      thickness: 0.4,
+                      endIndent: 20,
+                      color: Colors.white,
+                    )
+                  : const Divider(
+                      indent: 20,
+                      thickness: 0.4,
+                      endIndent: 20,
+                    ),
               const SizedBox(
                 height: 10,
               ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import '../constants/colors.dart';
@@ -17,11 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer( const Duration(seconds: 2), () {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (_) => const OnBoardingScreen()),
-        (route) => false,
-      );
+      Get.off(()=> const OnBoardingScreen(),);
     });
     super.initState();
   }

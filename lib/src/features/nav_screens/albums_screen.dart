@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:galleryapp/src/utils/styles.dart';
 import 'package:galleryapp/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 class AlbumsScreen extends StatefulWidget {
@@ -17,13 +18,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
           titleSpacing: 0,
           title:  Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: Text('Albums',style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.displayLarge,
-              fontSize: Utils.mediumTextSize,
-              color: Colors.white,
-              fontWeight: FontWeight.w900,
-              fontStyle: FontStyle.italic,
-            )),
+            child: Text('Albums',style: Style.bottomNavBarTextStyle(context)),
           ),
         backgroundColor: Colors.black.withOpacity(0.5),
       ),

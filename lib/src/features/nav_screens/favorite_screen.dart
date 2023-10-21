@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:galleryapp/src/utils/styles.dart';
 import 'package:galleryapp/src/utils/utils.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,18 +25,12 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           titleSpacing: 0,
           title:  Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: Text('Favorite',style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.displayLarge,
-              fontSize: Utils.mediumTextSize,
-              color: Colors.white,
-              fontWeight: FontWeight.w900,
-              fontStyle: FontStyle.italic,
-            )),
+            child: Text('Favorite',style: Style.bottomNavBarTextStyle(context)),
           ),
           backgroundColor: Colors.black.withOpacity(0.5),
         ),
         body: const Center(
-          child: Text('Favorite',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
+          child: Text('No favorite yet..',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
         ));
   }
 }
