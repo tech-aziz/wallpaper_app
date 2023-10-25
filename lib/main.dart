@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:galleryapp/src/bindings/all_bindings.dart';
-import 'package:galleryapp/src/features/splash_screen.dart';
-import 'package:galleryapp/src/utils/theme.dart';
+import 'package:wallpaper_app/bindings/all_bindings.dart';
+import 'package:wallpaper_app/views/SplashScreen/splash_screen.dart';
+import 'package:wallpaper_app/views/utils/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:flutter/services.dart';
 
@@ -30,31 +30,9 @@ class _MyAppState extends State<MyApp> {
         // theme: lightThemeData,
         theme: ThemeData(
             primarySwatch: Colors.red
-            // listTileTheme: const ListTileThemeData(
-            //   tileColor: Colors.white,
-            // )
         ),
         darkTheme: darkThemeData,
         home: const SplashScreen(),
-
-        // themeMode: ThemeMode.system,
-
-        // theme: ThemeData(
-        //   colorScheme: ColorScheme.fromSwatch(
-        //     primarySwatch: Colors.green
-        //   )
-        // ),
-        // theme:
-        //     ThemeScreen.mode ? ThemeScreen.darkTheme : ThemeScreen.lightTheme,
-
-        //always dark theme or ThemeData.light() => always light theme
-
-        // darkTheme: ThemeData(
-        //   brightness: Brightness.dark,
-        // ),
-        // themeMode: ThemeMode.dark,
-        // home: const MainScreen()
-        // home: const PracticeWidget(),
         );
   }
 }
