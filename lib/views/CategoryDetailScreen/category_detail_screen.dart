@@ -28,7 +28,6 @@ class CategoryDetailScreen extends StatefulWidget {
 class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
   final FavoriteController favoriteController = Get.put(FavoriteController());
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,6 +85,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                   shrinkWrap: true,
                   primary: false,
                   itemCount: widget.image.length,
+                  scrollDirection: Axis.vertical,
                   gridDelegate:
                       const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),

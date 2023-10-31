@@ -36,10 +36,10 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(),
+              const SizedBox.shrink(),
               Lottie.asset(
                 animate: true,
-                'assets/json/splash_animation1.json',
+                'assets/lottie/splash_animation1.json',
                 width: size.width,
               ),
                Text(
