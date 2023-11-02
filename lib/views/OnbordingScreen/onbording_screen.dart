@@ -3,8 +3,6 @@ import 'package:wallpaper_app/views/MainScreen/main_screen.dart';
 import 'package:wallpaper_app/views/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
 

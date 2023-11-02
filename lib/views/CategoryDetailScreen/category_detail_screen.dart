@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wallpaper_app/controller/favorite_controller.dart';
 import '../utils/config.dart';
 import '../ImageViewScreen/imageview_screen.dart';
-
 // ignore: must_be_immutable
 class CategoryDetailScreen extends StatefulWidget {
   String name;

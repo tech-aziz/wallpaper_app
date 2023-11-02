@@ -1,12 +1,14 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wallpaper_app/components/custom_button.dart';
 import 'package:wallpaper_app/components/custom_circle_container.dart';
 import 'package:wallpaper_app/components/custom_dialog_box.dart';
-
+import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
@@ -33,10 +35,44 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
   final height = Get.height;
   final width = Get.width;
   double? _progress;
+  IconData favIcon = Icons.heart_broken_rounded;
+  String ? favImage;
+
+  //instance of get_storage
+  GetStorage box = GetStorage();
+
+  //store data or image function
+  storeFavImage(){
+    box.write('image', widget.getImage);
+  }
+  //read data or image function
+  readFavImage(){
+    favImage = box.read('image');
+  }
+
+  storeImage () async {
+    final prefs = await SharedPreferences.getInstance();
+    List<Map> favImages = List.from(jsonDecode(prefs.getString('favImages') ?? '[]'));
+    favImages.add({
+      'url' : widget.getImage,
+      'title' : widget.title,
+      'description' : widget.descriptions
+    });
+    saveImage(favImages);
+  }
+
+  saveImage (List<Map> favImages) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('favImages', jsonEncode(favImages));
+    Get.snackbar('Success', 'Images successfully added to favourite');
+    print(prefs.getString('favImages'));
+  }
+
 
   @override
   void initState() {
     super.initState();
+    // readFavImage();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   }
 
@@ -87,9 +123,11 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
     Timer(const Duration(seconds: 3), () async {
       if (state == 'complete') {
         try {
-        // ignore: empty_catches
+          final bool result =
+          await WallpaperManager.setWallpaperFromFile(filePath!, locationType);
+          print('Request response $result');
         } catch (e) {
-
+          print('Error while set wallpaper $e');
         }
       }
     });
@@ -115,11 +153,14 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                     icon: Icons.arrow_back_ios_new_rounded,
                   ),
                 ),
-                actions: const [
+                actions:  [
                   InkWell(
                     // onTap: () => Get.back(),
+                    onTap: () async {
+                      storeImage();
+                    },
                     child: CustomCircleContainer(
-                      icon: Icons.heart_broken_rounded,
+                      icon: favIcon,
                       isPadding: true,
                     ),
                   )

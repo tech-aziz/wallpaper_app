@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:wallpaper_app/bindings/all_bindings.dart';
 import 'package:wallpaper_app/views/SplashScreen/splash_screen.dart';
 import 'package:wallpaper_app/views/utils/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+void main() async{
   AllBindings().dependencies();
+  await GetStorage.init(); // Initialize get storage driver
   //for downloading image
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

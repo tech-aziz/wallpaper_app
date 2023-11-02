@@ -49,7 +49,11 @@ dependencies:
   flutter_file_downloader: ^1.1.2
   flutter_wallpaper_manager: ^0.0.4
   url_launcher: ^6.1.14
+  # confetti for festive mode
   confetti: ^0.7.0
+  # for storing data as key-value pair in memory
+  get_storage: ^2.1.1
+  shared_preferences: ^2.2.2
 
 
 dev_dependencies:
