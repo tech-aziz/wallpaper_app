@@ -101,7 +101,12 @@ class OnBoardingScreen extends StatelessWidget {
                                   transition: Transition.rightToLeft,
                                   duration: const Duration(seconds: 1));
                             },
-                            child: const Text('Get Started')),
+                            child:  Text('Get Started',style: GoogleFonts.lato(
+                          fontSize: 21,
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic,
+                              letterSpacing: 0.9
+                        ),)),
                       ),
                     ),
                      SizedBox(

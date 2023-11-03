@@ -15,6 +15,8 @@ import 'package:share_plus/share_plus.dart';
 import '../utils/config.dart';
 import 'package:flutter/services.dart';
 
+import '../utils/styles.dart';
+
 // ignore: must_be_immutable
 class ImageViewScreen extends StatefulWidget {
   final String getImage;
@@ -36,35 +38,40 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
   final width = Get.width;
   double? _progress;
   IconData favIcon = Icons.heart_broken_rounded;
-  String ? favImage;
+  String? favImage;
+  bool isFavSelected = false;
 
   //instance of get_storage
   GetStorage box = GetStorage();
 
-  //store data or image function
-  storeFavImage(){
-    box.write('image', widget.getImage);
-  }
-  //read data or image function
-  readFavImage(){
-    favImage = box.read('image');
-  }
-
-  storeImage () async {
+  void storeImage() async {
     final prefs = await SharedPreferences.getInstance();
-    List<Map> favImages = List.from(jsonDecode(prefs.getString('favImages') ?? '[]'));
+    List<Map> favImages =
+        List.from(jsonDecode(prefs.getString('favImages') ?? '[]'));
     favImages.add({
-      'url' : widget.getImage,
-      'title' : widget.title,
-      'description' : widget.descriptions
+      'url': widget.getImage,
+      'title': widget.title,
+      'description': widget.descriptions
     });
     saveImage(favImages);
   }
 
-  saveImage (List<Map> favImages) async {
+
+
+ void saveImage(List<Map> favImages) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('favImages', jsonEncode(favImages));
-    Get.snackbar('Success', 'Images successfully added to favourite');
+    Get.snackbar(
+        borderRadius: AppConfig.defaultBorderRadius,
+        duration: const Duration(seconds: 3),
+        isDismissible: true,
+        dismissDirection: DismissDirection.horizontal,
+        forwardAnimationCurve: Curves.easeOutBack,
+        snackPosition: SnackPosition.TOP,
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+        'Success',
+        'Images successfully added to favourite');
     print(prefs.getString('favImages'));
   }
 
@@ -89,7 +96,6 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
         });
       },
       onDownloadCompleted: (value) {
-
         Get.snackbar(
             borderRadius: AppConfig.defaultBorderRadius,
             duration: const Duration(seconds: 3),
@@ -123,8 +129,8 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
     Timer(const Duration(seconds: 3), () async {
       if (state == 'complete') {
         try {
-          final bool result =
-          await WallpaperManager.setWallpaperFromFile(filePath!, locationType);
+          final bool result = await WallpaperManager.setWallpaperFromFile(
+              filePath!, locationType);
           print('Request response $result');
         } catch (e) {
           print('Error while set wallpaper $e');
@@ -135,7 +141,6 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
@@ -149,20 +154,35 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                 automaticallyImplyLeading: false,
                 leading: InkWell(
                   onTap: () => Get.back(),
-                  child: const CustomCircleContainer(
+                  child: CustomCircleContainer(
                     icon: Icons.arrow_back_ios_new_rounded,
                   ),
                 ),
-                actions:  [
+                actions: [
                   InkWell(
                     // onTap: () => Get.back(),
                     onTap: () async {
-                      storeImage();
+                      if (isFavSelected == false) {
+                        storeImage();
+                      } else {
+                        const SizedBox.shrink();
+                      }
+                      setState(() {
+                        isFavSelected = !isFavSelected;
+                        print('The favorite values is: $isFavSelected');
+                      });
                     },
-                    child: CustomCircleContainer(
-                      icon: favIcon,
-                      isPadding: true,
-                    ),
+                    child: isFavSelected == true
+                        ? CustomCircleContainer(
+                            color: Colors.red,
+                            icon: favIcon,
+                            isPadding: true,
+                          )
+                        : CustomCircleContainer(
+                            icon: favIcon,
+                            isPadding: true,
+                            color: Colors.transparent,
+                          ),
                   )
                 ],
               ),
@@ -206,15 +226,15 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            height: 70,
-                            width: 70,
+                            height: 65,
+                            width: 65,
                             decoration: BoxDecoration(
                                 border: Border.all(width: 1, color: Colors.red),
                                 // borderRadius: BorderRadius.circular(12),
                                 color: Colors.white10.withOpacity(0.1),
                                 shape: BoxShape.circle),
                             child: Padding(
-                              padding: const EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.all(17.0),
                               child: SvgPicture.asset(
                                 'assets/icons/info.svg',
                                 // ignore: deprecated_member_use
@@ -225,9 +245,19 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Text(
+                          Text(
                             'Info',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                            style: Style.globalTextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontStyle: FontStyle.italic,
+                                letterSpacing: 0.9),
+                            // style: GoogleFonts.lato(
+                            //     fontSize: 20,
+                            //     color: Colors.white,
+                            //     fontStyle: FontStyle.italic,
+                            //     letterSpacing: 0.9
+                            // )
                           ),
                         ],
                       ),
@@ -240,15 +270,15 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            height: 70,
-                            width: 70,
+                            height: 65,
+                            width: 65,
                             decoration: BoxDecoration(
                                 border: Border.all(width: 1, color: Colors.red),
                                 // borderRadius: BorderRadius.circular(12),
                                 color: Colors.white10.withOpacity(0.1),
                                 shape: BoxShape.circle),
                             child: Padding(
-                              padding: const EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.all(17.0),
                               child: SvgPicture.asset(
                                 'assets/icons/share.svg',
                                 // ignore: deprecated_member_use
@@ -259,10 +289,12 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Text(
-                            'Share',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
+                          Text('Share',
+                              style: Style.globalTextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontStyle: FontStyle.italic,
+                                  letterSpacing: 0.9)),
                         ],
                       ),
                     ),
@@ -274,15 +306,15 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            height: 70,
-                            width: 70,
+                            height: 65,
+                            width: 65,
                             decoration: BoxDecoration(
                               border: Border.all(width: 1, color: Colors.red),
                               shape: BoxShape.circle,
                               color: Colors.white10.withOpacity(0.1),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.all(17.0),
                               child: SvgPicture.asset(
                                 'assets/icons/save.svg',
                                 // ignore: deprecated_member_use
@@ -293,10 +325,12 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Text(
-                            'Save',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
+                          Text('Save',
+                              style: Style.globalTextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontStyle: FontStyle.italic,
+                                  letterSpacing: 0.9)),
                         ],
                       ),
                     ),
@@ -319,15 +353,17 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                                     height: 12,
                                   ),
                                   Text('Apply',
-                                      style: GoogleFonts.lato(
-                                        textStyle: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall,
-                                        fontSize: AppConfig.smallTextSize,
-                                        color: Colors.black.withOpacity(0.5),
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.italic,
-                                      )),
+                                      style: Style.globalTextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                          fontStyle: FontStyle.italic,
+                                          letterSpacing: 0.9),
+                                      // style: GoogleFonts.lato(
+                                      //     fontSize: 20,
+                                      //     color: Colors.black,
+                                      //     fontStyle: FontStyle.italic,
+                                      //     letterSpacing: 0.9)
+                                  ),
                                   const SizedBox(
                                     height: 4,
                                   ),
@@ -383,12 +419,12 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            height: 70,
-                            width: 70,
+                            height: 65,
+                            width: 65,
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle, color: Colors.red),
                             child: Padding(
-                              padding: const EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.all(17.0),
                               child: SvgPicture.asset(
                                 'assets/icons/apply.svg',
                                 // ignore: deprecated_member_use
@@ -399,10 +435,12 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Text(
-                            'Apply',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
+                          Text('Apply',
+                              style: Style.globalTextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontStyle: FontStyle.italic,
+                                  letterSpacing: 0.9)),
                         ],
                       ),
                     ),

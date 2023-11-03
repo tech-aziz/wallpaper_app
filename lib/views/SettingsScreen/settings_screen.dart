@@ -8,6 +8,8 @@ import 'package:share_plus/share_plus.dart';
 import 'package:slide_rating_dialog/slide_rating_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../utils/config.dart';
+
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
@@ -45,7 +47,24 @@ class _MenuScreenState extends State<MenuScreen> {
         titleSpacing: 0,
         title: Padding(
           padding: const EdgeInsets.only(left: 8),
-          child: Text('Settings', style: Style.bottomNavBarTextStyle(context)),
+          child: Text('Settings', style: Style.globalTextStyle(
+              fontSize:
+              AppConfig.mediumTextSize,
+              fontWeight: FontWeight.w900,
+              shadows: [
+                Shadow(
+                    color: Colors.black
+                        .withOpacity(0.7),
+                    offset:
+                    const Offset(5, 7),
+                    blurRadius: 1)
+              ],
+              color: Colors.white,
+              fontStyle: FontStyle.italic,
+              textStyle: Theme.of(context)
+                  .textTheme
+                  .displayLarge,
+              letterSpacing: 3)),
         ),
         backgroundColor: Colors.black.withOpacity(0.5),
       ),

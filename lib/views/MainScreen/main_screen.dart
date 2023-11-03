@@ -11,6 +11,7 @@ import '../HomeScreen/home_screen.dart';
 import '../AlbumsScreen/albums_screen.dart';
 import '../FavoriteScreen/favorite_screen.dart';
 import '../SettingsScreen/settings_screen.dart';
+import '../utils/styles.dart';
 
 class MainScreen extends StatefulWidget {
   final int? index;
@@ -47,11 +48,12 @@ class _MainScreenState extends State<MainScreen> {
               return AlertDialog(
                 alignment: Alignment.center,
                 content: Text('Do you want to close the app?',
-                    style: GoogleFonts.lato(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500,
-                      fontStyle: FontStyle.italic,
-                    )),
+                    style: Style.globalTextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontStyle: FontStyle.italic,
+                        letterSpacing: 0.9)
+                ),
                 actions: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +73,7 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ),
                       Container(
-                        height: 40,
+                        height: 35,
                         width: .7,
                         color: Colors.black12.withOpacity(0.7),
                       ),

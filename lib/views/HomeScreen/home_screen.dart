@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wallpaper_app/models/categories_image_model.dart';
 import '../utils/config.dart';
 import '../CategoryDetailScreen/category_detail_screen.dart';
+import '../utils/styles.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -1710,8 +1711,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    FocusManager.instance.primaryFocus?.unfocus();
-
     return Stack(
       alignment: Alignment.topCenter,
       children: [
@@ -1732,25 +1731,35 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 10,
                   ),
                   Get.isDarkMode
-                      ? Text(
-                          'Best of the month',
-                          style: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.displayLarge,
-                            fontSize: AppConfig.largeTextSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        )
+                      ? Text('Best of the month',
+                          style: Style.globalTextStyle(
+                              textStyle:
+                                  Theme.of(context).textTheme.displayLarge,
+                              fontSize: AppConfig.largeTextSize,
+                              color: Colors.black.withOpacity(.8),
+                              shadows: [
+                                Shadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    offset: const Offset(5, 4),
+                                    blurRadius: 1)
+                              ],
+                              fontWeight: FontWeight.w900,
+                              fontStyle: FontStyle.italic))
                       : Text(
                           'Best of the month',
-                          style: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.displayLarge,
-                            fontSize: AppConfig.largeTextSize,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w900,
-                            fontStyle: FontStyle.italic,
-                          ),
+                          style: Style.globalTextStyle(
+                              textStyle:
+                                  Theme.of(context).textTheme.displayLarge,
+                              shadows: [
+                                Shadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    offset: const Offset(5, 4),
+                                    blurRadius: 1)
+                              ],
+                              fontSize: AppConfig.largeTextSize,
+                              color: Colors.black.withOpacity(.8),
+                              fontWeight: FontWeight.w900,
+                              fontStyle: FontStyle.italic),
                         ),
                   const SizedBox(
                     height: 15,
@@ -1785,7 +1794,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.displayLarge,
                             fontSize: AppConfig.largeTextSize,
-                            color: Colors.white,
+                            color: Colors.black.withOpacity(.8),
+                            shadows: [
+                              Shadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  offset: const Offset(5, 4),
+                                  blurRadius: 1)
+                            ],
                             fontWeight: FontWeight.w900,
                             fontStyle: FontStyle.italic,
                           ),
@@ -1795,7 +1810,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.displayLarge,
                             fontSize: AppConfig.largeTextSize,
-                            color: Colors.black,
+                            color: Colors.black.withOpacity(.8),
+                            shadows: [
+                              Shadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  offset: const Offset(5, 4),
+                                  blurRadius: 1)
+                            ],
                             fontWeight: FontWeight.w900,
                             fontStyle: FontStyle.italic,
                           ),
@@ -1850,26 +1871,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: Padding(
                                         padding:
                                             const EdgeInsets.only(bottom: 12.0),
-                                        child: Text(
-                                          data.name.toString(),
-                                          style: GoogleFonts.lato(
-                                              textStyle: Theme.of(context)
-                                                  .textTheme
-                                                  .displayLarge,
-                                              fontSize:
-                                                  AppConfig.mediumTextSize,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w900,
-                                              fontStyle: FontStyle.italic,
-                                              shadows: [
-                                                Shadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.7),
-                                                    offset: const Offset(5, 7),
-                                                    blurRadius: 1)
-                                              ],
-                                              letterSpacing: 3),
-                                        ),
+                                        child: Text(data.name.toString(),
+                                            style: Style.globalTextStyle(
+                                                fontSize:
+                                                    AppConfig.mediumTextSize,
+                                                fontWeight: FontWeight.w900,
+                                                shadows: [
+                                                  Shadow(
+                                                      color: Colors.black
+                                                          .withOpacity(0.7),
+                                                      offset:
+                                                          const Offset(5, 7),
+                                                      blurRadius: 1)
+                                                ],
+                                                color: Colors.white,
+                                                fontStyle: FontStyle.italic,
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .displayLarge,
+                                                letterSpacing: 3)),
                                       )))
                             ],
                           ),
