@@ -1715,7 +1715,9 @@ class _HomeScreenState extends State<HomeScreen> {
       alignment: Alignment.topCenter,
       children: [
         Scaffold(
-          appBar: customAppBar(title: 'Happy Wall', context: context, action: [
+          appBar: customAppBar(
+              title: 'Happy Wall',
+              context: context, action: [
             CustomActionBar(
               controller: controller,
             )
@@ -1736,7 +1738,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               textStyle:
                                   Theme.of(context).textTheme.displayLarge,
                               fontSize: AppConfig.largeTextSize,
-                              color: Colors.black.withOpacity(.8),
+                              color: Colors.white,
                               shadows: [
                                 Shadow(
                                     color: Colors.black.withOpacity(0.2),
@@ -1744,6 +1746,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     blurRadius: 1)
                               ],
                               fontWeight: FontWeight.w900,
+
                               fontStyle: FontStyle.italic))
                       : Text(
                           'Best of the month',
@@ -1794,7 +1797,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.displayLarge,
                             fontSize: AppConfig.largeTextSize,
-                            color: Colors.black.withOpacity(.8),
+                            color: Colors.white,
                             shadows: [
                               Shadow(
                                   color: Colors.black.withOpacity(0.2),

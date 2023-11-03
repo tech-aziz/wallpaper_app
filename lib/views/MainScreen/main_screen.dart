@@ -28,7 +28,6 @@ class _MainScreenState extends State<MainScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   var currentIndex = 0;
 
-
   //List of pages
   List pages = [
     const HomeScreen(),
@@ -40,7 +39,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-
     Future<bool> showExitPopup() async {
       return await showDialog(
             context: context,
@@ -52,8 +50,7 @@ class _MainScreenState extends State<MainScreen> {
                         fontSize: 20,
                         color: Colors.black,
                         fontStyle: FontStyle.italic,
-                        letterSpacing: 0.9)
-                ),
+                        letterSpacing: 0.9)),
                 actions: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,9 +108,10 @@ class _MainScreenState extends State<MainScreen> {
             // unselectedFontSize: 0,
             // showSelectedLabels: false,
             // showUnselectedLabels: false,
-
+            selectedLabelStyle: TextStyle(color: AppColors.primaryColor),
+            unselectedLabelStyle: TextStyle(color: AppColors.secondaryColorDarkTheme),
             elevation: 0,
-            // selectedItemColor: Colors.white,
+            selectedItemColor: Colors.red,
             // unselectedItemColor: Colors.white.withOpacity(0.5),
             // currentIndex: navbarController.selectedIndex.toInt(),
             currentIndex: currentIndex,
@@ -132,7 +130,7 @@ class _MainScreenState extends State<MainScreen> {
                           color: Colors.white)
                       : SvgPicture.asset('assets/icons/home.svg',
                           // ignore: deprecated_member_use
-                          color: Colors.black),
+                          color: Colors.red),
                   // icon: Icon(Icons.apps_rounded),
 
                   label: 'Home'),
@@ -140,7 +138,7 @@ class _MainScreenState extends State<MainScreen> {
                 // icon: Icon(Icons.bar_chart_sharp),
                 // SvgPicture.asset('assets/icons/heart.svg'),
                 icon: Stack(
-                  clipBehavior: Clip.none,
+                  // clipBehavior: Clip.none,
                   children: [
                     Get.isDarkMode
                         ? SvgPicture.asset(
@@ -151,7 +149,7 @@ class _MainScreenState extends State<MainScreen> {
                         : SvgPicture.asset(
                             'assets/icons/heart.svg',
                             // ignore: deprecated_member_use
-                            color: Colors.black,
+                            color: Colors.red,
                           ),
                     // const Icon(Icons.heart_broken),
                     favoriteController.favIncrementValue.value == 0
@@ -194,7 +192,7 @@ class _MainScreenState extends State<MainScreen> {
                           : SvgPicture.asset(
                               'assets/icons/album.svg',
                               // ignore: deprecated_member_use
-                              color: Colors.black,
+                              color: Colors.red,
                             ),
                       // const Icon(Icons.heart_broken),
                       favoriteController.favIncrementValue.value == 0
@@ -235,7 +233,7 @@ class _MainScreenState extends State<MainScreen> {
                       : SvgPicture.asset(
                           'assets/icons/more.svg',
                           // ignore: deprecated_member_use
-                          color: Colors.black,
+                          color: Colors.red,
                           height: 25,
                         ),
                 ),

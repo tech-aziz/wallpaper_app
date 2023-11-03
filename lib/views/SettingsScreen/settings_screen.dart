@@ -66,7 +66,6 @@ class _MenuScreenState extends State<MenuScreen> {
                   .displayLarge,
               letterSpacing: 3)),
         ),
-        backgroundColor: Colors.black.withOpacity(0.5),
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),

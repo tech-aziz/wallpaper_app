@@ -10,11 +10,9 @@ import 'package:wallpaper_app/components/custom_circle_container.dart';
 import 'package:wallpaper_app/components/custom_dialog_box.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
 import '../utils/config.dart';
 import 'package:flutter/services.dart';
-
 import '../utils/styles.dart';
 
 // ignore: must_be_immutable
@@ -56,9 +54,7 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
     saveImage(favImages);
   }
 
-
-
- void saveImage(List<Map> favImages) async {
+  void saveImage(List<Map> favImages) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('favImages', jsonEncode(favImages));
     Get.snackbar(
@@ -74,7 +70,6 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
         'Images successfully added to favourite');
     print(prefs.getString('favImages'));
   }
-
 
   @override
   void initState() {
@@ -175,11 +170,11 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                     child: isFavSelected == true
                         ? CustomCircleContainer(
                             color: Colors.red,
-                            icon: favIcon,
                             isPadding: true,
+                      icon: Icons.heart_broken_rounded,
                           )
                         : CustomCircleContainer(
-                            icon: favIcon,
+                      icon: Icons.heart_broken_rounded,
                             isPadding: true,
                             color: Colors.transparent,
                           ),
@@ -337,11 +332,11 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                     InkWell(
                       onTap: () {
                         showModalBottomSheet(
-                          backgroundColor: Colors.white,
+                          backgroundColor: Colors.white.withOpacity(0.7),
                           shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(12),
-                                  topLeft: Radius.circular(12))),
+                                  topRight: Radius.circular(30),
+                                  topLeft: Radius.circular(30))),
                           context: context,
                           builder: (context) {
                             return SizedBox(
@@ -352,17 +347,13 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                                   const SizedBox(
                                     height: 12,
                                   ),
-                                  Text('Apply',
-                                      style: Style.globalTextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          fontStyle: FontStyle.italic,
-                                          letterSpacing: 0.9),
-                                      // style: GoogleFonts.lato(
-                                      //     fontSize: 20,
-                                      //     color: Colors.black,
-                                      //     fontStyle: FontStyle.italic,
-                                      //     letterSpacing: 0.9)
+                                  Text(
+                                    'Apply',
+                                    style: Style.globalTextStyle(
+                                        fontSize: 20,
+                                        color: Colors.black,
+                                        fontStyle: FontStyle.italic,
+                                        letterSpacing: 0.9),
                                   ),
                                   const SizedBox(
                                     height: 4,

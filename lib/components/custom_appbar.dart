@@ -10,7 +10,6 @@ PreferredSizeWidget customAppBar({
 }) {
   return AppBar(
     automaticallyImplyLeading: false,
-    backgroundColor: Colors.black.withOpacity(0.5),
     titleSpacing: 0,
     elevation: 0,
     title: Padding(

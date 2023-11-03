@@ -38,7 +38,6 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                     .displayLarge,
                 letterSpacing: 3)),
           ),
-        backgroundColor: Colors.black.withOpacity(0.5),
       ),
       body: const Center(
         child: Text('Album',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),

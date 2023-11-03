@@ -60,7 +60,7 @@ class _CustomActionBarState extends State<CustomActionBar> {
                                 radius: 25.0,
                                 backgroundColor:
                                 Colors.white.withOpacity(.1),
-                                child: const Icon(Icons.close)),
+                                child: const Icon(Icons.close,color: Colors.white,)),
                           )
                         ],
                       ),
@@ -82,7 +82,7 @@ class _CustomActionBarState extends State<CustomActionBar> {
                                   // Adjust the height as needed
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
-                                    color: Colors.blue,
+                                    border: Border.all(width: 1, color: Colors.red),
                                     borderRadius:
                                     BorderRadius.circular(12),
                                   ),

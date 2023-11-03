@@ -3,8 +3,10 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wallpaper_app/controller/favorite_controller.dart';
+import 'package:wallpaper_app/views/utils/styles.dart';
 import '../utils/config.dart';
 import '../ImageViewScreen/imageview_screen.dart';
+
 // ignore: must_be_immutable
 class CategoryDetailScreen extends StatefulWidget {
   String name;
@@ -31,7 +33,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+          automaticallyImplyLeading: false,
           leading: InkWell(
               onTap: () {
                 Get.back();
@@ -43,34 +45,50 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             title: Get.isDarkMode
                 ? Text(
                     widget.name,
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.displayLarge,
-                      fontSize: AppConfig.mediumTextSize,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontStyle: FontStyle.italic,
-                    ),
+                    style: Style.globalTextStyle(
+                        fontSize: AppConfig.mediumTextSize,
+                        fontWeight: FontWeight.w900,
+                        shadows: [
+                          Shadow(
+                              color: Colors.black.withOpacity(0.7),
+                              offset: const Offset(6, 4),
+                              blurRadius: 1)
+                        ],
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                        textStyle: Theme.of(context).textTheme.displayLarge,
+                        letterSpacing: 2),
                   )
                 : Text(
                     widget.name,
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.displayLarge,
-                      fontSize: AppConfig.mediumTextSize,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontStyle: FontStyle.italic,
-                    ),
+                    style: Style.globalTextStyle(
+                        fontSize: AppConfig.mediumTextSize,
+                        fontWeight: FontWeight.w900,
+                        shadows: [
+                          Shadow(
+                              color: Colors.black.withOpacity(0.7),
+                              offset: const Offset(6, 4),
+                              blurRadius: 1)
+                        ],
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                        textStyle: Theme.of(context).textTheme.displayLarge,
+                        letterSpacing: 2),
                   ),
-            subtitle: Text(
-              '${widget.image.length} Wallpaper Available',
-              style: GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.displayLarge,
-                fontSize: AppConfig.smallTextSize,
-                fontWeight: FontWeight.w800,
-                color: Colors.white,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
+            subtitle: Text('${widget.image.length} Wallpaper Available',
+                style: Style.globalTextStyle(
+                    fontSize: AppConfig.smallTextSize,
+                    fontWeight: FontWeight.w900,
+                    shadows: [
+                      Shadow(
+                          color: Colors.black.withOpacity(0.7),
+                          offset: const Offset(4, 4),
+                          blurRadius: 1)
+                    ],
+                    color: Colors.white,
+                    fontStyle: FontStyle.italic,
+                    textStyle: Theme.of(context).textTheme.displayLarge,
+                    letterSpacing: 2)),
           )),
       body: SafeArea(
         child: Padding(
@@ -85,6 +103,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                   primary: false,
                   itemCount: widget.image.length,
                   scrollDirection: Axis.vertical,
+                  physics: const BouncingScrollPhysics(),
                   gridDelegate:
                       const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),

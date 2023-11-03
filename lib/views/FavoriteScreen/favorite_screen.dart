@@ -1,11 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wallpaper_app/views/utils/styles.dart';
-
 import '../ImageViewScreen/imageview_screen.dart';
 import '../utils/config.dart';
 
@@ -35,15 +33,12 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     }
   }
 
-
-
   deleteImage(index) async {
     setState(() {
       favImages.removeAt(index);
     });
     saveImage(favImages);
   }
-
 
   void saveImage(List<Map> favImages) async {
     final prefs = await SharedPreferences.getInstance();
@@ -61,7 +56,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         'Images deleted successfully');
     print(prefs.getString('favImages'));
   }
-
 
   @override
   void initState() {
@@ -93,7 +87,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   textStyle: Theme.of(context).textTheme.displayLarge,
                   letterSpacing: 3)),
         ),
-        backgroundColor: Colors.black.withOpacity(0.5),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
@@ -107,6 +100,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 primary: false,
                 itemCount: favImages.length,
                 scrollDirection: Axis.vertical,
+                physics: const BouncingScrollPhysics(),
                 gridDelegate:
                     const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2),
@@ -146,8 +140,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             padding: const EdgeInsets.all(2),
                             width: 30,
                             height: 30,
-                            decoration: const BoxDecoration(
-                                color: Colors.red, shape: BoxShape.circle),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                                border: Border.all(width: 1, color: Colors.white.withOpacity(0.2)), shape: BoxShape.circle),
                             child: const Center(
                                 child: Icon(
                               Icons.delete_outline_rounded,
