@@ -13,7 +13,7 @@ Widget customButton(
         decoration: BoxDecoration(
           // color: Colors.white,
           border: Border.all(
-            color: Colors.black.withOpacity(.1),
+            color: borderColor,
           ),
           borderRadius: BorderRadius.circular(10),
         ),

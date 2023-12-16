@@ -49,10 +49,10 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                         fontSize: AppConfig.mediumTextSize,
                         fontWeight: FontWeight.w900,
                         shadows: [
-                          Shadow(
-                              color: Colors.black.withOpacity(0.7),
-                              offset: const Offset(6, 4),
-                              blurRadius: 1)
+                          // Shadow(
+                          //     color: Colors.black.withOpacity(0.7),
+                          //     offset: const Offset(6, 4),
+                          //     blurRadius: 1)
                         ],
                         color: Colors.white,
                         fontStyle: FontStyle.italic,
@@ -65,12 +65,12 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                         fontSize: AppConfig.mediumTextSize,
                         fontWeight: FontWeight.w900,
                         shadows: [
-                          Shadow(
-                              color: Colors.black.withOpacity(0.7),
-                              offset: const Offset(6, 4),
-                              blurRadius: 1)
+                          // Shadow(
+                          //     color: Colors.black.withOpacity(0.7),
+                          //     offset: const Offset(6, 4),
+                          //     blurRadius: 1)
                         ],
-                        color: Colors.white,
+                        color: Colors.black,
                         fontStyle: FontStyle.italic,
                         textStyle: Theme.of(context).textTheme.displayLarge,
                         letterSpacing: 2),
@@ -80,12 +80,12 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                     fontSize: AppConfig.smallTextSize,
                     fontWeight: FontWeight.w900,
                     shadows: [
-                      Shadow(
-                          color: Colors.black.withOpacity(0.7),
-                          offset: const Offset(4, 4),
-                          blurRadius: 1)
+                      // Shadow(
+                      //     color: Colors.black.withOpacity(0.7),
+                      //     offset: const Offset(4, 4),
+                      //     blurRadius: 1)
                     ],
-                    color: Colors.white,
+                    color: Get.isDarkMode ? Colors.white : Colors.black,
                     fontStyle: FontStyle.italic,
                     textStyle: Theme.of(context).textTheme.displayLarge,
                     letterSpacing: 2)),

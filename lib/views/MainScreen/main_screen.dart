@@ -63,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
                             textColor:
                                 Get.isDarkMode ? Colors.white : Colors.black,
                             btnName: 'Yes',
-                            borderColor: AppColors.primaryColor,
+                            borderColor: Get.isDarkMode ? AppColors.primaryColor : Colors.black.withOpacity(.1),
                             context: context,
                           ),
                         ),
@@ -78,7 +78,7 @@ class _MainScreenState extends State<MainScreen> {
                               textColor:
                                   Get.isDarkMode ? Colors.white : Colors.black,
                               btnName: 'No',
-                              borderColor: AppColors.primaryColor,
+                              borderColor: Get.isDarkMode ? AppColors.primaryColor : Colors.black.withOpacity(.1),
                               context: context),
                         ),
                       ),

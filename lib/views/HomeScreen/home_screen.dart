@@ -1737,6 +1737,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       textStyle: Theme.of(context).textTheme.displayLarge,
                       letterSpacing: 3)),
             ),
+            actions: [
+              CustomActionBar(
+                controller: controller,
+              )
+            ],
           ),
           //
           // appBar: customAppBar(
@@ -1745,7 +1750,8 @@ class _HomeScreenState extends State<HomeScreen> {
           //   CustomActionBar(
           //     controller: controller,
           //   )
-          // ]),
+          // ]
+          // ),
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(5),

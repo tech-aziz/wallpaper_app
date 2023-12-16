@@ -18,7 +18,7 @@ class CustomDialogBoxState extends State<CustomDialogBox> {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.defaultPadding),
+        borderRadius: BorderRadius.circular(AppConfig.defaultBorderRadius),
       ),
       elevation: 0,
       backgroundColor: Colors.transparent,
@@ -35,7 +35,7 @@ class CustomDialogBoxState extends State<CustomDialogBox> {
           decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               color: Colors.white,
-              borderRadius: BorderRadius.circular(AppConfig.defaultPadding),
+              borderRadius: BorderRadius.circular(AppConfig.defaultBorderRadius),
               boxShadow: const [
                 BoxShadow(
                     color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
