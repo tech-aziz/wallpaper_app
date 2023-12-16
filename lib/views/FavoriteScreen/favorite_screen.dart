@@ -53,8 +53,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         colorText: Colors.white,
         backgroundColor: Colors.red,
         'Sorry',
-        'Images deleted successfully');
-    print(prefs.getString('favImages'));
+        'Image deleted successfully');
   }
 
   @override
@@ -74,15 +73,15 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           padding: const EdgeInsets.only(left: 8),
           child: Text('Favorite',
               style: Style.globalTextStyle(
-                  fontSize: AppConfig.mediumTextSize,
+                  fontSize: AppConfig.extraLargeTextSize,
                   fontWeight: FontWeight.w900,
                   shadows: [
-                    Shadow(
-                        color: Colors.black.withOpacity(0.7),
-                        offset: const Offset(5, 7),
-                        blurRadius: 1)
+                    // Shadow(
+                    //     color: Colors.black.withOpacity(0.7),
+                    //     offset: const Offset(5, 7),
+                    //     blurRadius: 1)
                   ],
-                  color: Colors.white,
+                  color: Get.isDarkMode ? Colors.white : Colors.black.withOpacity(0.7),
                   fontStyle: FontStyle.italic,
                   textStyle: Theme.of(context).textTheme.displayLarge,
                   letterSpacing: 3)),

@@ -46,9 +46,9 @@ class _SplashScreenState extends State<SplashScreen> {
                  AppConfig.appName,
                 style: GoogleFonts.lato(
                   textStyle: Theme.of(context).textTheme.displayLarge,
-                  fontSize: 35,
+                  fontSize: 32,
                   letterSpacing: 1,
-                  color: Colors.white,
+                  color: Colors.red,
                   fontWeight: FontWeight.w800,
                   fontStyle: FontStyle.italic,
                 ),

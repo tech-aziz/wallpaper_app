@@ -6,7 +6,6 @@ import 'dart:ui';
 
 class AppColors{
   static Color primaryColor = const Color(0xFFFF494C);
-  // static Color blueColor = const Color(0xFF1FA5C3);
 
 // Light Theme
   static Color secondaryColorLightTheme = const Color(0xFFEEF1F7);

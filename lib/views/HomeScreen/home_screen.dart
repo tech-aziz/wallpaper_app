@@ -1715,16 +1715,40 @@ class _HomeScreenState extends State<HomeScreen> {
       alignment: Alignment.topCenter,
       children: [
         Scaffold(
-          appBar: customAppBar(
-              title: 'Happy Wall',
-              context: context, action: [
-            CustomActionBar(
-              controller: controller,
-            )
-          ]),
+          appBar: AppBar(
+            elevation: 0,
+            titleSpacing: 0,
+            title: Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Text('Happy Wall',
+                  style: Style.globalTextStyle(
+                      fontSize: AppConfig.extraLargeTextSize,
+                      fontWeight: FontWeight.w900,
+                      shadows: [
+                        // Shadow(
+                        //     color: Colors.black.withOpacity(0.7),
+                        //     offset: const Offset(5, 7),
+                        //     blurRadius: 1)
+                      ],
+                      color: Get.isDarkMode
+                          ? Colors.white
+                          : Colors.black.withOpacity(0.7),
+                      fontStyle: FontStyle.italic,
+                      textStyle: Theme.of(context).textTheme.displayLarge,
+                      letterSpacing: 3)),
+            ),
+          ),
+          //
+          // appBar: customAppBar(
+          //     title: 'Happy Wall',
+          //     context: context, action: [
+          //   CustomActionBar(
+          //     controller: controller,
+          //   )
+          // ]),
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(5),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1746,7 +1770,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     blurRadius: 1)
                               ],
                               fontWeight: FontWeight.w900,
-
                               fontStyle: FontStyle.italic))
                       : Text(
                           'Best of the month',
@@ -1759,7 +1782,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     offset: const Offset(5, 4),
                                     blurRadius: 1)
                               ],
-                              fontSize: AppConfig.largeTextSize,
+                              fontSize: AppConfig.mediumTextSize,
                               color: Colors.black.withOpacity(.8),
                               fontWeight: FontWeight.w900,
                               fontStyle: FontStyle.italic),

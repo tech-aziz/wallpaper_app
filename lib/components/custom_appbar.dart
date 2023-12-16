@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/views/utils/styles.dart';
-
 import '../views/utils/config.dart';
 
 PreferredSizeWidget customAppBar({
@@ -16,17 +15,11 @@ PreferredSizeWidget customAppBar({
       padding: const EdgeInsets.only(left: 8),
       child: Text(title, style: Style.globalTextStyle(
           fontSize:
-          AppConfig.mediumTextSize,
+          AppConfig.extraLargeTextSize,
           fontWeight: FontWeight.w900,
           shadows: [
-            Shadow(
-                color: Colors.black
-                    .withOpacity(0.7),
-                offset:
-                const Offset(5, 7),
-                blurRadius: 1)
           ],
-          color: Colors.white,
+          color: Colors.black.withOpacity(0.7),
           fontStyle: FontStyle.italic,
           textStyle: Theme.of(context)
               .textTheme

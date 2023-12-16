@@ -3,6 +3,7 @@ import 'package:wallpaper_app/views/MainScreen/main_screen.dart';
 import 'package:wallpaper_app/views/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
 
@@ -47,25 +48,52 @@ class OnBoardingScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                 const SizedBox(),
+                const SizedBox(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Explore ',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.displayLarge,
+                            fontSize: 35,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                        Text(
+                          '4k',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.displayLarge,
+                            fontSize: 35,
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
+                    ),
                     Text(
-                      'Explore 4k \nWallpapers',
+                      'Wallpapers',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         textStyle: Theme.of(context).textTheme.displayLarge,
-                        fontSize: 42,
+                        fontSize: 35,
+
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                     SizedBox(
-                       height: AppConfig.defaultPadding / 2,
+                    SizedBox(
+                      height: AppConfig.defaultPadding / 2,
                     ),
-
                     Text(
                       'Explore, Create, Share\n Ultra 4k wallpapers Now!',
                       style: GoogleFonts.lato(
@@ -77,16 +105,17 @@ class OnBoardingScreen extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: AppConfig.defaultPadding,
                     ),
                     Padding(
-                      padding:  EdgeInsets.all(AppConfig.defaultPadding / 2),
+                      padding: EdgeInsets.all(AppConfig.defaultPadding / 2),
                       child: SizedBox(
                         width: double.infinity,
                         height: 45,
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     25), // Button border radius
@@ -98,18 +127,19 @@ class OnBoardingScreen extends StatelessWidget {
                             ),
                             onPressed: () {
                               Get.off(() => const MainScreen(),
-                                  transition: Transition.rightToLeft,
                                   duration: const Duration(seconds: 1));
                             },
-                            child:  Text('Get Started',style: GoogleFonts.lato(
-                          fontSize: 21,
-                          color: Colors.white,
-                          fontStyle: FontStyle.italic,
-                              letterSpacing: 0.9
-                        ),)),
+                            child: Text(
+                              'Get Started',
+                              style: GoogleFonts.lato(
+                                  fontSize: 21,
+                                  color: Colors.white,
+                                  fontStyle: FontStyle.italic,
+                                  letterSpacing: 0.9),
+                            )),
                       ),
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: AppConfig.defaultPadding / 2,
                     ),
                   ],

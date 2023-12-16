@@ -6,7 +6,6 @@ import 'package:wallpaper_app/controller/favorite_controller.dart';
 import 'package:wallpaper_app/controller/navbar_controller.dart';
 import 'package:wallpaper_app/views/utils/colors.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../HomeScreen/home_screen.dart';
 import '../AlbumsScreen/albums_screen.dart';
 import '../FavoriteScreen/favorite_screen.dart';
@@ -47,8 +46,8 @@ class _MainScreenState extends State<MainScreen> {
                 alignment: Alignment.center,
                 content: Text('Do you want to close the app?',
                     style: Style.globalTextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
+                        fontSize: 19,
+                        color: Get.isDarkMode ? Colors.white : Colors.black,
                         fontStyle: FontStyle.italic,
                         letterSpacing: 0.9)),
                 actions: [
@@ -69,11 +68,7 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                         ),
                       ),
-                      Container(
-                        height: 35,
-                        width: .7,
-                        color: Colors.black12.withOpacity(0.7),
-                      ),
+                      const SizedBox(width: 30,),
                       Expanded(
                         child: InkWell(
                           onTap: () {
@@ -100,7 +95,6 @@ class _MainScreenState extends State<MainScreen> {
       onWillPop: showExitPopup,
       child: Scaffold(
         key: _scaffoldKey,
-        // backgroundColor: Colors.white,
         body: pages[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,

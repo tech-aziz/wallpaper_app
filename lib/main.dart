@@ -6,14 +6,16 @@ import 'package:wallpaper_app/views/utils/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:flutter/services.dart';
 
-void main() async{
+void main() async {
   AllBindings().dependencies();
   await GetStorage.init(); // Initialize get storage driver
   //for downloading image
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
-  runApp(const MyApp());
+  //fixed portrait mode
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatefulWidget {
@@ -26,15 +28,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Wallpaper-App',
-        // theme: lightThemeData,
-        theme: ThemeData(
-            primarySwatch: Colors.red
-        ),
-        darkTheme: darkThemeData,
-        home: const SplashScreen(),
-        );
+    return  GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Wallpaper-App',
+      themeMode: ThemeMode.light,
+      theme: ThemeData(primarySwatch: Colors.red),
+      darkTheme: darkThemeData,
+      home: const SplashScreen(),
+    );
   }
 }

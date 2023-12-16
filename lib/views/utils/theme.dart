@@ -3,19 +3,19 @@ import 'package:wallpaper_app/views/utils/colors.dart';
 import 'package:wallpaper_app/views/utils/config.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-final lightThemeData = ThemeData(
-    brightness: Brightness.light,
-    primaryColor: AppColors.primaryColor,
-    textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme),
-    elevatedButtonTheme: elevatedButtonThemeData);
-
-final elevatedButtonThemeData = ElevatedButtonThemeData(
-  style: TextButton.styleFrom(
-      backgroundColor: AppColors.primaryColor,
-      padding:   EdgeInsets.all(AppConfig.defaultPadding),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppConfig.defaultBorderRadius))),
-);
+// final lightThemeData = ThemeData(
+//     brightness: Brightness.light,
+//     primaryColor: AppColors.primaryColor,
+//     textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme),
+//     elevatedButtonTheme: elevatedButtonThemeData);
+//
+// final elevatedButtonThemeData = ElevatedButtonThemeData(
+//   style: TextButton.styleFrom(
+//       backgroundColor: AppColors.primaryColor,
+//       padding:   EdgeInsets.all(AppConfig.defaultPadding),
+//       shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(AppConfig.defaultBorderRadius))),
+// );
 
 final darkThemeData = ThemeData(
     brightness: Brightness.dark,

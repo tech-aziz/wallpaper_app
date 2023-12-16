@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wallpaper_app/components/custom_button.dart';
 import 'package:wallpaper_app/components/custom_circle_container.dart';
 import 'package:wallpaper_app/components/custom_dialog_box.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import '../utils/config.dart';
@@ -39,9 +38,6 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
   String? favImage;
   bool isFavSelected = false;
 
-  //instance of get_storage
-  GetStorage box = GetStorage();
-
   void storeImage() async {
     final prefs = await SharedPreferences.getInstance();
     List<Map> favImages =
@@ -68,7 +64,6 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
         backgroundColor: Colors.red,
         'Success',
         'Images successfully added to favourite');
-    print(prefs.getString('favImages'));
   }
 
   @override
@@ -164,7 +159,6 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                       }
                       setState(() {
                         isFavSelected = !isFavSelected;
-                        print('The favorite values is: $isFavSelected');
                       });
                     },
                     child: isFavSelected == true
@@ -247,12 +241,6 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                                 color: Colors.white,
                                 fontStyle: FontStyle.italic,
                                 letterSpacing: 0.9),
-                            // style: GoogleFonts.lato(
-                            //     fontSize: 20,
-                            //     color: Colors.white,
-                            //     fontStyle: FontStyle.italic,
-                            //     letterSpacing: 0.9
-                            // )
                           ),
                         ],
                       ),
@@ -441,29 +429,6 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
             ),
           ),
         ),
-        // Stack(
-        //   alignment: Alignment.bottomCenter,
-        //   children: [
-        //     Container(
-        //       width: double.infinity,
-        //       decoration: BoxDecoration(
-        //           image: DecorationImage(
-        //               image: NetworkImage(
-        //                 widget.getImage,
-        //               ),
-        //               fit: BoxFit.cover)),
-        //     ),
-        //     // const Spacer(),
-        //     // Positioned(child: ),
-        //     Positioned(
-        //       child: Padding(
-        //         padding:
-        //             const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-        //         child: ,
-        //       ),
-        //     )
-        //   ],
-        // ),
       ),
     );
   }

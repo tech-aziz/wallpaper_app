@@ -8,9 +8,10 @@ class AppConfig {
   static  String albumText = 'Album';
 
   // TEXT FONT SIZES
-  static  double smallTextSize = 16.0;
-  static  double mediumTextSize = 23.5;
-  static  double largeTextSize = 30.0;
+  static  double smallTextSize = 15.0;
+  static  double mediumTextSize = 22.0;
+  static  double largeTextSize = 23.0;
+  static double extraLargeTextSize = 25.0;
 
 
   // RADIUS
