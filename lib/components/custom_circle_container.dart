@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class CustomCircleContainer extends StatelessWidget {
   final bool? isPadding;
-  final IconData icon;
+  final IconData? icon;
+  final String? imageIcon;
+  final bool? isRed;
   Color? color;
 
   CustomCircleContainer(
-      {super.key, this.isPadding, required this.icon, this.color});
+      {super.key,
+      this.isPadding,
+      this.icon,
+      this.color,
+      this.imageIcon,
+      this.isRed});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +27,16 @@ class CustomCircleContainer extends StatelessWidget {
           shape: BoxShape.circle),
       child: Padding(
         padding: EdgeInsets.all(isPadding == true ? 12 : 0),
-        child: Center(child: Icon(icon)),
+        child: Center(
+            child: imageIcon != null
+                ? Image.asset(
+                    imageIcon!,
+                    color: isRed == true ? null : Colors.white,
+                  )
+                : Icon(
+                    icon,
+                    color: Get.isDarkMode ? Colors.white : Colors.white,
+                  )),
       ),
     );
   }

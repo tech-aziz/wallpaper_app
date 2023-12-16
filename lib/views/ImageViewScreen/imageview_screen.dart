@@ -150,29 +150,24 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                 ),
                 actions: [
                   InkWell(
-                    // onTap: () => Get.back(),
-                    onTap: () async {
-                      if (isFavSelected == false) {
-                        storeImage();
-                      } else {
-                        const SizedBox.shrink();
-                      }
-                      setState(() {
-                        isFavSelected = !isFavSelected;
-                      });
-                    },
-                    child: isFavSelected == true
-                        ? CustomCircleContainer(
-                            color: Colors.red,
-                            isPadding: true,
-                      icon: Icons.heart_broken_rounded,
-                          )
-                        : CustomCircleContainer(
-                      icon: Icons.heart_broken_rounded,
-                            isPadding: true,
-                            color: Colors.transparent,
-                          ),
-                  )
+                      // onTap: () => Get.back(),
+                      onTap: () async {
+                        if (isFavSelected == false) {
+                          storeImage();
+                        } else {
+                          const SizedBox.shrink();
+                        }
+                        setState(() {
+                          isFavSelected = !isFavSelected;
+                        });
+                      },
+                      child: CustomCircleContainer(
+                        // color: Colors.red,
+                        isRed: isFavSelected,
+                        isPadding: true,
+                        // icon: Icons.heart_broken_rounded,
+                        imageIcon: 'assets/icons/love.png',
+                      ))
                 ],
               ),
             )),
