@@ -34,65 +34,77 @@ class _MainScreenState extends State<MainScreen> {
     const AlbumsScreen(),
     const MenuScreen()
   ];
+  // for exit popup dialog
+  Future<bool> showExitPopup() async {
+    return await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          alignment: Alignment.center,
+          content: Text('Do you want to close the app?',
+              style: Style.globalTextStyle(
+                  fontSize: 19,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
+                  fontStyle: FontStyle.italic,
+                  letterSpacing: 0.9)),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      exit(0);
+                    },
+                    child: customButton(
+                      textColor:
+                      Get.isDarkMode ? Colors.white : Colors.black,
+                      btnName: 'Yes',
+                      borderColor: Get.isDarkMode
+                          ? AppColors.primaryColor
+                          : Colors.black.withOpacity(.1),
+                      context: context,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 30,
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: customButton(
+                        textColor:
+                        Get.isDarkMode ? Colors.white : Colors.black,
+                        btnName: 'No',
+                        borderColor: Get.isDarkMode
+                            ? AppColors.primaryColor
+                            : Colors.black.withOpacity(.1),
+                        context: context),
+                  ),
+                ),
+              ],
+            )
+          ],
+        );
+      },
+    ) ??
+        false;
+  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    Future<bool> showExitPopup() async {
-      return await showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                alignment: Alignment.center,
-                content: Text('Do you want to close the app?',
-                    style: Style.globalTextStyle(
-                        fontSize: 19,
-                        color: Get.isDarkMode ? Colors.white : Colors.black,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 0.9)),
-                actions: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: InkWell(
-                          onTap: () {
-                            exit(0);
-                          },
-                          child: customButton(
-                            textColor:
-                                Get.isDarkMode ? Colors.white : Colors.black,
-                            btnName: 'Yes',
-                            borderColor: Get.isDarkMode ? AppColors.primaryColor : Colors.black.withOpacity(.1),
-                            context: context,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 30,),
-                      Expanded(
-                        child: InkWell(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: customButton(
-                              textColor:
-                                  Get.isDarkMode ? Colors.white : Colors.black,
-                              btnName: 'No',
-                              borderColor: Get.isDarkMode ? AppColors.primaryColor : Colors.black.withOpacity(.1),
-                              context: context),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              );
-            },
-          ) ??
-          false;
-    }
-
-    return WillPopScope(
-      onWillPop: showExitPopup,
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (bool didPop) {
+        if (didPop) {
+          return;
+        }
+        showExitPopup();
+      },
       child: Scaffold(
         key: _scaffoldKey,
         body: pages[currentIndex],
@@ -103,7 +115,8 @@ class _MainScreenState extends State<MainScreen> {
             // showSelectedLabels: false,
             // showUnselectedLabels: false,
             selectedLabelStyle: TextStyle(color: AppColors.primaryColor),
-            unselectedLabelStyle: TextStyle(color: AppColors.secondaryColorDarkTheme),
+            unselectedLabelStyle:
+                TextStyle(color: AppColors.secondaryColorDarkTheme),
             elevation: 0,
             selectedItemColor: Colors.red,
             // unselectedItemColor: Colors.white.withOpacity(0.5),
