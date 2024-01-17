@@ -196,15 +196,90 @@ class _ImageViewScreenState extends State<ImageViewScreen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        showDialog(
+                        showModalBottomSheet(
+                          backgroundColor: Colors.white.withOpacity(0.7),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(30),
+                                  topLeft: Radius.circular(30))),
                           context: context,
                           builder: (context) {
-                            return CustomDialogBox(
-                                title: widget.title,
-                                descriptions: widget.descriptions,
-                                img: widget.getImage);
+                            return SizedBox(
+                              height: 290,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                  Text(
+                                    'Apply',
+                                    style: Style.globalTextStyle(
+                                        fontSize: 20,
+                                        color: Colors.black,
+                                        fontStyle: FontStyle.italic,
+                                        letterSpacing: 0.9),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  InkWell(
+                                    onTap: () async {
+                                      Get.back();
+                                      _setWallpaper(
+                                          WallpaperManager.HOME_SCREEN);
+                                    },
+                                    child: customButton(
+                                        btnName: 'Home Screen',
+                                        textColor: Colors.black,
+                                        borderColor: Colors.red,
+                                        context: context),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.back();
+                                      _setWallpaper(
+                                          WallpaperManager.LOCK_SCREEN);
+                                    },
+                                    child: customButton(
+                                        btnName: 'Lock Screen',
+                                        textColor: Colors.black,
+                                        borderColor: Colors.red,
+                                        context: context),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.back();
+                                      _setWallpaper(
+                                          WallpaperManager.BOTH_SCREEN);
+                                    },
+                                    child: customButton(
+                                        btnName: 'Both',
+                                        textColor: Colors.black,
+                                        borderColor: Colors.red,
+                                        context: context),
+                                  ),
+                                ],
+                              ),
+                            );
                           },
                         );
+
+                        // showDialog(
+                        //   context: context,
+                        //   builder: (context) {
+                        //     return CustomDialogBox(
+                        //         title: widget.title,
+                        //         descriptions: widget.descriptions,
+                        //         img: widget.getImage);
+                        //   },
+                        // );
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,

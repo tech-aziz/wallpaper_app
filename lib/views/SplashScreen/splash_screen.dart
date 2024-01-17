@@ -16,6 +16,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  // Called only once when the widget is created
   @override
   void initState() {
     Timer( const Duration(seconds: 2), () {
@@ -24,6 +26,8 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
   }
 
+  // Builds the widget tree
+  // A build is triggered every time we use setState()
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);

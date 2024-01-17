@@ -54,6 +54,8 @@ dependencies:
   #shared_preferences:
   get_storage: ^2.1.1
   shared_preferences: ^2.2.2
+  # Future-based library for making HTTP requests
+  http: ^1.1.2
 
 
 dev_dependencies:
